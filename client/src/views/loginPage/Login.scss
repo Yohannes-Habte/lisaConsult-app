@@ -1,4 +1,6 @@
 @import "../../styles/Variables.scss";
+@import "../../styles/Mixins.scss";
+
 
 .lagin-page {
   width: 100%;
@@ -9,17 +11,13 @@
   background-size: cover;
 
   .login-title {
-    font-size: 2rem;
-    text-align: center;
-    color: $header-color;
-    padding-top: 2rem;
+    @include title;
   }
 
   .login-container {
     width: $laptop;
     margin:1rem auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 1px;
+    @include shadow;
 
     .login-icon-container{
       width: 24%;
@@ -27,6 +25,8 @@
       .login-icon {
         align-items: center;
         font-size: 5rem;
+        padding-top: 1rem;
+        color: $title;
       }
     }
 
@@ -80,22 +80,12 @@
         }
   
         .login-button {
-          margin-bottom: 1rem;
-          padding: 1rem;
-          border-radius: 0.5rem;
-          font-size: 1.6rem;
-          font-weight: 700;
-          background: $buttonbg;
-          cursor: pointer;
-          transition: 0.5s;
-  
-          &:hover {
-            background-color: $button-hover;
-          }
+          @include btn1;
         }
   
         .haveNoAccount {
           font-size: 1.2rem;
+          margin-top: 1rem;
   
           & a{
               font-weight: bold;
@@ -156,9 +146,7 @@
   .lagin-page {
 
     .login-title {
-      font-size: 2.5rem;
-      text-align: center;
-      color: $header-color;
+      @include title;
     }
 
     .login-container {
@@ -174,6 +162,10 @@
       .login-fieldset {
         width: 90%;
         margin: auto;
+
+        .login-legend {
+          font-size: $afs;
+        }
   
         .login-form {
           .login-checkbox-forget-password {

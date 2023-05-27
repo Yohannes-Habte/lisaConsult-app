@@ -119,7 +119,7 @@ const Placeorder = () => {
         <title>Order Preview</title>
       </Helmet>
 
-      <ProductCheckoutSteps step1 step2 step3 step4></ProductCheckoutSteps>
+      <ProductCheckoutSteps step1 step2 step3 step4 ></ProductCheckoutSteps>
 
       <section className="order-container">
         <h1 className="order-title"> General Order Preview </h1>

@@ -126,7 +126,7 @@ const Login = () => {
       </Helmet>
 
       <ProductCheckoutSteps step1 > </ProductCheckoutSteps>
-      <h1 className="login-title"> Welcome To Log In </h1>
+      <h1 className="login-title"> Welcome To Your Account </h1>
       <div className="login-container">
         <figure className="login-icon-container">
           <FaUserAlt className="login-icon" />

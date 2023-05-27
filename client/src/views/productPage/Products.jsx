@@ -36,8 +36,8 @@ const Products = () => {
       <Helmet>
         <title> Products </title>
       </Helmet>
-      <section>
-        <h1> Organic Delicious Meals</h1>
+      <section className='organic-foods-container'>
+        <h1 className='meals-title'> Organic Delicious Meals</h1>
 
         {loading ? (
           <Loading />

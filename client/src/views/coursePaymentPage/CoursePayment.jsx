@@ -4,6 +4,7 @@ import { CourseContext } from '../../context/course/CourseProvider';
 import { COURSE_ACTION } from '../../context/course/CourseReducer';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import "./CoursePayment.scss"
 
 const CoursePayment = () => {
   const navigate = useNavigate();
@@ -28,7 +29,6 @@ const CoursePayment = () => {
 
     if (!paymentMethodName) {
       toast.error('Please select the payment method!');
-
     } else {
       try {
         dispatch({
@@ -44,41 +44,45 @@ const CoursePayment = () => {
     }
   };
 
-  return <main className="payment-page">
-  <Helmet>
-    <title> Payment </title>
-  </Helmet>
-  
-  <h1 className="payment-title"> Payment Methods </h1>
-  <form onSubmit={submitPayment} action="" className="payment-form">
-    <div className="payment-input">
-      <input
-        type="radio"
-        name="paymentMethodName"
-        is="payPal"
-        value={paymentMethodName}
-        checked={paymentMethodName === 'payPal'}
-        onChange={(e) => setPaymentMethod(e.target.value)}
-      />
-      <label htmlFor="payPal">PayPal</label>
-    </div>
+  return (
+    <main className="course-payment-page">
+      <Helmet>
+        <title> Payment </title>
+      </Helmet>
+      <section className="course-payment-container">
+        <h1 className="payment-title"> Payment Methods </h1>
 
-    <div className="payment-input">
-      <input
-        type="radio"
-        name="paymentMethodName"
-        is="stripe"
-        value={paymentMethodName}
-        checked={paymentMethodName === 'stripe'}
-        onChange={(e) => setPaymentMethod(e.target.value)}
-      />
+        <form onSubmit={submitPayment} action="" className="course-payment-form">
+          <div className="payment-input">
+            <input
+              type="radio"
+              name="paymentMethodName"
+              is="payPal"
+              value={paymentMethodName}
+              checked={paymentMethodName === 'payPal'}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            />
+            <label htmlFor="payPal">PayPal</label>
+          </div>
 
-      <label htmlFor="stripe">Stripe</label>
-    </div>
+          <div className="payment-input">
+            <input
+              type="radio"
+              name="paymentMethodName"
+              is="stripe"
+              value={paymentMethodName}
+              checked={paymentMethodName === 'stripe'}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            />
 
-    <button className="payment-btn"> Next </button>
-  </form>
-</main>;
+            <label htmlFor="stripe">Stripe</label>
+          </div>
+
+          <button className="course-payment-btn"> Next </button>
+        </form>
+      </section>
+    </main>
+  );
 };
 
 export default CoursePayment;

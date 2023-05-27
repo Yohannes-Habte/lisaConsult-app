@@ -5,6 +5,7 @@ import axios from 'axios';
 import { COURSE_ACTION } from '../../context/course/CourseReducer';
 import { Helmet } from 'react-helmet-async';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
+import './CoursePlaceOrder.scss';
 
 // Object for placing an order
 const COURSE_ORDER = {
@@ -78,7 +79,8 @@ const CoursePlaceOrder = () => {
 
       const { data } = await axios.post(
         process.env.REACT_APP_SERVER_URL + '/api/courseRegistrations',
-        newOrder, settings
+        newOrder,
+        settings
       );
       contextDispatch({ type: COURSE_ACTION.ADD_COURSE, payload: data });
       dispatch({ type: COURSE_ORDER.ORDER_SUCCESS });
@@ -91,73 +93,94 @@ const CoursePlaceOrder = () => {
   };
 
   return (
-    <main className="order-page">
+    <main className="course-order-page">
       <Helmet>
-        <title>Order Preview</title>
+        <title>Course order preview</title>
       </Helmet>
 
-      <section className="order-container">
-        <h1 className="order-title"> General Course Order Preview </h1>
-        <div>
-          {/* Course Order */}
-          <article className="course-order">
-            <h4>Course</h4>
-            <p>
-              <strong>Name:</strong> {course.name}
-            </p>
+      <section className="course-order-container">
+        <h1 className="course-order-title"> General Course Order Preview </h1>
+        <div className="course-order-details">
+          <div className="order-address-payment">
+            {/* Course Order */}
+            <article className="course-order">
+              <h4 className='subTitle'>Course Information</h4>
+              <p>
+                <strong>Name:</strong> {course.name}
+              </p>
 
-            <p>
-              <strong>Start on:</strong> {course.start}
-            </p>
+              <p>
+                <strong>Start on:</strong> {course.start}
+              </p>
 
-            <NavLink to={'/course'}> Edit</NavLink>
+              <NavLink to={'/course'} className={"edit"}> Edit</NavLink>
+            </article>
+            {/* Shipping Address */}
+            <article className="student-address">
+              <h4 className='subTitle'> Student Address</h4>
+
+              <ul>
+                <li>
+                  <strong>Name:</strong> {studentAddress.firstName}{' '}
+                  {studentAddress.lastName}
+                </li>
+                <li>
+                  <strong>Profession: </strong> {studentAddress.profession}
+                </li>
+
+                <li>
+                  <strong>Language: </strong> {studentAddress.language}
+                </li>
+                <li>
+                  <strong>Gender: </strong> {studentAddress.gender}
+                </li>
+                <li>
+                  <strong>Phone: </strong> {studentAddress.phone}
+                </li>
+              </ul>
+              <p>
+                <strong>Address: </strong> {studentAddress.address}{' '}
+                {studentAddress.houseNo}, {studentAddress.zipCode},{' '}
+                {studentAddress.city}, {studentAddress.state},{' '}
+                {studentAddress.country}{' '}
+              </p>
+              <p></p>
+
+              <NavLink to={'/studentAddress'} className={"edit"}> Edit</NavLink>
+            </article>
+
+            {/* Payment Method */}
+            <article className="payment-method">
+              <h4 className='subTitle'>Payment Method</h4>
+              <p>
+                <strong>Method:</strong> {paymentMethod}
+              </p>
+              <NavLink to={'/coursPayment'}  className={"edit"}> Edit</NavLink>
+            </article>
+          </div>
+
+          <article className="course-order-summary">
+            <h4 className='subTitle'>Course Order Summary</h4>
+            <div className="course-price">
+              <p className="price"> Course Price: </p>
+              <p className="price"> Course Tax: </p>
+              <hr />
+              <p className="price"> Total Price: </p>
+              <hr />
+            </div>
+            <button onClick={submitOrder} className="course-order-btn">
+              Submit Order
+            </button>
+
+            <article className='support'>
+              <h4 className='title'>Do You Need Support?</h4>
+              <p>If you need suport, click on <NavLink to={"/contact"} className="link"> Help Me </NavLink> </p>
+            </article>
+            <article className='success'>
+              <h4 className='title'> Celebrate Your Success! </h4>
+              <p> Your dream comes true. Congratulation! </p>
+            </article>
           </article>
-          {/* Shipping Address */}
-          <article className="shipping-address">
-            <h4>Address</h4>
-
-            <ul>
-              <li>
-                <strong>Name:</strong> {studentAddress.firstName}{' '}
-                {studentAddress.lastName}
-              </li>
-              <li>
-                <strong>Profession: </strong> {studentAddress.profession}
-              </li>
-
-              <li>
-                <strong>Language: </strong> {studentAddress.language}
-              </li>
-              <li>
-                <strong>Gender: </strong> {studentAddress.gender}
-              </li>
-              <li>
-                <strong>Phone: </strong> {studentAddress.phone}
-              </li>
-            </ul>
-            <p>
-              <strong>Address: </strong> {studentAddress.address}{' '}
-              {studentAddress.houseNo}, {studentAddress.zipCode},{' '}
-              {studentAddress.city}, {studentAddress.state},{' '}
-              {studentAddress.country}{' '}
-            </p>
-            <p></p>
-
-            <NavLink to={'/studentAddress'}> Edit</NavLink>
-          </article>
-
-          {/* Payment Method */}
-          <article className="payment-method">
-            <h4>Payment</h4>
-            <p>
-              <strong>Method:</strong> {paymentMethod}
-            </p>
-            <NavLink to={'/orderPayment'}> Edit</NavLink>
-          </article>
-
-          <button onClick={submitOrder} className="order-btn">
-            Submit Order
-          </button>
         </div>
       </section>
     </main>

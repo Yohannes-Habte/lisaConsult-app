@@ -1,4 +1,5 @@
 @import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
 
 .register-page {
   width: 100%;
@@ -69,18 +70,7 @@
       }
 
       .register-button {
-        margin-left: 1rem;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        font-size: 1.6rem;
-        font-weight: 700;
-        background: $buttonbg;
-        cursor: pointer;
-        transition: 0.5s;
-
-        &:hover {
-          background-color: $button-hover;
-        }
+       @include btn1;
       }
 
       .haveAccount {

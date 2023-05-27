@@ -106,7 +106,7 @@ const Shipping = () => {
         <title> Shipping Address </title>
       </Helmet>
 
-      <ProductCheckoutSteps step1 step2>  </ProductCheckoutSteps>
+      <ProductCheckoutSteps step1 step2 >  </ProductCheckoutSteps>
 
       <section className="shipping-address-container">
         <h1 className="shipping-address-title"> Shipping Address </h1>

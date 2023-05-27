@@ -10,6 +10,7 @@ import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { toast } from 'react-toastify';
 import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import { Helmet } from 'react-helmet-async';
+import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
 
 const Register = () => {
   // to navigate register page
@@ -202,6 +203,7 @@ const Register = () => {
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
+      
       <div className="register-form-container">
         <fieldset className="register-field">
           <legend className="register-legend"> Register </legend>

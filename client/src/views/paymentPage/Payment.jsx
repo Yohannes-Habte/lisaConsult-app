@@ -41,7 +41,7 @@ const Payment = () => {
       <Helmet>
         <title className="payment-title"> Payment </title>
       </Helmet>
-      <ProductCheckoutSteps step1 step2 step3></ProductCheckoutSteps>
+      <ProductCheckoutSteps step1 step2 step3  ></ProductCheckoutSteps>
 
       <h1 className='title'> Payment Methods </h1>
 

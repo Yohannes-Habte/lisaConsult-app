@@ -1,0 +1,48 @@
+@import '../../Styles/Variables.scss';
+@import '../../Styles/Mixins.scss';
+
+.course-payment-page {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .course-payment-container {
+    width: 100%;
+    max-width: 40%;
+    margin: auto;
+
+    .payment-title {
+      @include title;
+      margin: -5rem 0 1rem 0;
+    }
+
+    .course-payment-form {
+     @include shadow;
+     background-color: #F0F8FF;
+     padding: 0 2rem;
+
+      .payment-input {
+        display: flex;
+        gap: 0.5rem;
+
+        & input {
+          width: 1.2rem;
+          height: 3rem;
+          border-radius: 50%;
+        }
+
+        & label {
+          padding: 0.7rem 0;
+          font-size: $afs;
+          font-weight: bold;
+        }
+      }
+
+      .course-payment-btn {
+        @include button;
+      }
+    }
+  }
+}
