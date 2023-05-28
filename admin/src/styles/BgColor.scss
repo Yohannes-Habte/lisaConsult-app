@@ -1,0 +1,135 @@
+.app.dark {
+  .home-page {
+    .home-contianer {
+      background-color: #333;
+    }
+  }
+
+  // Sidebar
+  .sidebar {
+    background-color: #222;
+    border-color: #333;
+
+    .logo {
+      color: lightgray;
+    }
+
+    .horizontal-line {
+      height: 0;
+      border: 1px solid #777;
+    }
+
+    .item {
+      .sidebar-icon {
+        color: #555;
+      }
+    }
+  }
+
+  // Navbar
+  .navbar {
+    background-color: #222;
+    color: lightgrey;
+
+    .search {
+      background-color: #222;
+      border: 1px solid lightgrey;
+    }
+
+    .item {
+      .navbar-icon {
+        color: #ffffffab;
+      }
+    }
+  }
+
+  // Widget
+  .widget {
+    background-color: #333;
+
+    .title,
+    .counter {
+      color: #d3d3d3b7;
+    }
+
+    .link {
+      color: lightseagreen;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+        color: red;
+      }
+    }
+  }
+
+  // Featured Chart
+  .featured-chart {
+    background-color: #333;
+  }
+
+  // Chart
+  .chart {
+    background-color: #333;
+
+    .revenue {
+      color: #ffffffab;
+      text-align: center;
+    }
+  }
+
+  // Normal table
+  .table-container {
+    background-color: #333;
+
+    .table-cell {
+      color: #ffffff84;
+      background-color: #222;
+    }
+    .cell-content {
+      color: #ffffff84;
+      .status {
+        &.Approved {
+          background: none;
+        }
+
+        &.Pending {
+          background: none;
+          color: rgb(176, 138, 138);
+        }
+      }
+    }
+
+    .TableCel {
+      color: #ffffff84;
+    }
+  }
+
+  // User data table
+  .users-data-table {
+    background-color: #333;
+
+    .head-cell {
+      background-color: #222;
+      color: #ffffff9f;
+    }
+
+    .table-body-row {
+      color: #ffffffaf;
+    }
+  }
+
+// New page
+.new-page {
+  .new-page-container {
+    background-color: #333;
+
+    .file-label {
+      color: #ffffff6b;
+    }
+
+  }
+}
+
+ 
+}
