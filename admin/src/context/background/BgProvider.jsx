@@ -1,4 +1,5 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext } from 'react';
+import { useReducer } from 'react';
 import BgReducer from './BgReducer';
 
 // Initial State
@@ -12,7 +13,7 @@ export const BackgroundContext = createContext(initialState);
 // Function
 const BgProvider = ({ children }) => {
   // State variables
-  const [state, dispatch] = useReducer(BgReducer, initialState);
+  const [state, dispatch] = useReducer(BgReducer, initialState)
   return (
     <BackgroundContext.Provider value={{ darkMode: state.darkMode, dispatch }}>
       {children}

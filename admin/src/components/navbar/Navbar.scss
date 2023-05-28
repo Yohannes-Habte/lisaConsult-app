@@ -1,0 +1,91 @@
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
+
+.navbar {
+  height: 4rem;
+  border-bottom: 1px solid $hr;
+  font-size: $afs;
+  color: gray;
+  background-color: $main;
+  display: flex;
+  align-items: center;
+
+  .wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .search {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: $border;
+      border-radius: $radius;
+      background-color: white;
+      padding: 0.3rem;
+
+      .search-icon {
+        cursor: pointer;
+      }
+
+      .navbar-input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        padding: 0.5rem 1rem;
+
+        &::placeholder {
+          font-size: $afs;
+        }
+      }
+    }
+
+    .items {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: $sfs;
+        position: relative;
+
+        .navbar-icon {
+          font-size: $afs;
+          color: $title;
+          cursor: pointer;
+        }
+
+        .counter {
+          width: 1rem;
+          height: 1rem;
+          border-radius: 50%;
+          font-size: 0.5rem;
+          font-weight: $lfs;
+          background-color: red;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: -10px;
+          right: -5px;
+          cursor: pointer;
+        }
+
+        .navbar-profile {
+          height: 2rem;
+          width: 2rem;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

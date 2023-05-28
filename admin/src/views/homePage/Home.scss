@@ -1,0 +1,31 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixins.scss";
+
+
+.home-page {
+    display: flex;
+
+    .home-contianer {
+        background-color: $main;
+        flex: 5;
+
+        .widgets-container {
+            display: flex;
+            
+        }
+
+        .chats-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .list-container {
+            @include box;
+
+            .list-Title {
+                font-weight: $afw;
+                color: gray;
+            }
+        }
+    }
+}
