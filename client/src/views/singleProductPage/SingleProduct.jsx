@@ -84,9 +84,11 @@ const SingleProduct = () => {
               <img src={product.image} alt={product.name} className="image" />
             </figure>
 
-            <article>
+            <article className='single-product-details'>
               <h1 className="single-product-nane"> {product.name} </h1>
-              <Rating rating={product.rating} />
+              <span className="rating-container">
+                Rating: <Rating rating={product.rating} />
+              </span>
               <p>
                 <strong>Price</strong>: ${product.price}
               </p>

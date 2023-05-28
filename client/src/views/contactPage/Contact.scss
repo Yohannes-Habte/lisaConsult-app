@@ -1,4 +1,5 @@
-@import "../../styles/Variables.scss";
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
 
 .contact-page {
   width: $mobile;
@@ -14,7 +15,7 @@
   .contact-media {
     width: $mobile;
     margin: auto;
-    box-shadow: 0 0 2px;
+    @include shadow;
     border-radius: 0.2rem;
     padding: 1rem 2rem;
 
@@ -48,7 +49,7 @@
     width: $mobile;
     margin: 1rem auto;
     padding-bottom: 1rem;
-    box-shadow: 0 0 2px;
+    @include shadow;
     border-radius: 0.2rem;
 
     .contact-page-form-title {
@@ -68,24 +69,17 @@
           padding: 0.5rem;
           margin: 1rem 0;
           font-size: 1.2rem;
-          border: solid 2px $title;
+          border: solid 1px $title;
           border-radius: 0.3rem;
         }
       }
 
       .contact-form-button-container {
         width: 16%;
-        margin: 1rem auto;
+        margin: auto;
 
         .contact-form-btn {
-          padding: 0.5rem 1rem;
-          font-size: 1.6rem;
-          font-weight: bold;
-          border: solid 2px $title;
-          border-radius: 0.3rem;
-          background-color: $buttonbg;
-          cursor: pointer;
-          transition: 0.8s;
+          @include button;
 
           &:hover {
             background-color: $button-hover;
@@ -135,11 +129,18 @@
     }
 
     .contact-page-form {
+      width: 50%;
       padding-bottom: 1rem;
 
       .contact-form {
-        width: 60%;
+        width: 100%;
         margin: auto;
+        .contact-form-button-container {
+
+          .contact-form-btn {
+            @include btn1;
+          }
+        }
       }
     }
   }

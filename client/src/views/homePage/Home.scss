@@ -1,4 +1,5 @@
-@import "../../styles/Variables.scss";
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
 
 .home-page-container {
   width: $mobile;
@@ -8,9 +9,7 @@
   .investment-options {
     width: $mobile;
     margin: 1rem auto;
-    padding: 1rem;
-    box-shadow: 0 0 2px;
-    border-radius: 0.3rem;
+    @include shadow;
 
     .title-of-home-page {
       font-size: 2.5rem;
@@ -71,9 +70,10 @@
   }
 
   .specific-environment-analysis-container {
-    box-shadow: 0 0 2px;
+    @include shadow;
     border-radius: 0.3rem;
     padding-bottom: 0.5rem;
+    margin-top: 1rem;
 
     .sub-titles-of-home-page {
       width: $mobile;
@@ -100,7 +100,6 @@
         height: 10rem;
         margin: 0.5rem 0;
         border-radius: 0.3rem;
-        box-shadow: 0 0 2px;
         cursor: pointer;
         transition: 0.6s ease;
 

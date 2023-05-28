@@ -15,6 +15,13 @@
   line-height: 1.5rem;
 }
 
+@mixin shadow2 {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 1rem;
+  border-radius: $radius;
+  line-height: 1.5rem;
+}
+
 @mixin imageSize {
   width: 100px;
   height: 100px;

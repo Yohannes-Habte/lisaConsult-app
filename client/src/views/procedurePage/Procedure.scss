@@ -1,4 +1,5 @@
-@import "../../styles/Variables.scss";
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
 
 .about-page {
   width: $mobile;
@@ -17,9 +18,7 @@
     margin: 1rem auto;
 
     .specific-service-procedure {
-      box-shadow: 0 0 2px;
-      border-radius: 0.3rem;
-      margin-bottom: 1rem;
+      @include shadow;
 
       .sub-title {
         font-size: 1.5rem;
@@ -63,8 +62,7 @@
       line-height: 2rem;
 
       .specific-service-procedure {
-        box-shadow: 0 0 2px;
-        border-radius: 0.3rem;
+        @include shadow;
 
         .sub-title {
           font-size: 1.8rem;
@@ -90,6 +88,7 @@
 @media screen and (min-width: 1024px) {
   .about-page {
     width: $laptop;
+    height: 100vh;
     margin: 1rem auto;
 
     .about-page-title {
@@ -107,8 +106,7 @@
       column-gap: 2rem;
 
       .specific-service-procedure {
-        box-shadow: 0 0 2px;
-        border-radius: 0.3rem;
+        @include shadow;
 
         .sub-title {
           font-size: 1.8rem;

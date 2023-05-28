@@ -52,6 +52,7 @@ const Footer = () => {
           </ul>
         </section>
       </div>
+      <hr />
       <div className="footer-copyright">
         <p className="compyright"> &copy; 2022 LisaConsult. All rights reserved! </p>
         <figure className="footer-logo">

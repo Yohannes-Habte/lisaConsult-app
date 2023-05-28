@@ -61,7 +61,7 @@ const Cart = () => {
 
       {cartItems.length === 0 ? (
         <Message>
-          Cart is empty. <NavLink to={'/products'}> Go to Shopping </NavLink>
+          Cart is empty. <NavLink to={'/products'} className={"go-to-shopping"}> Go to Products Page for shopping! </NavLink>
         </Message>
       ) : (
         <div className="cart-items-details">
@@ -78,8 +78,8 @@ const Cart = () => {
                         className="image"
                       />
                     </figure>
-                    <div className="name">
-                      <NavLink to={`/products/${product._id}`}>
+                    <div className="product-name">
+                      <NavLink to={`/products/${product._id}`} className={"link"}>
                         {product.name}
                       </NavLink>
                     </div>
@@ -97,7 +97,9 @@ const Cart = () => {
                     </button>
 
                     {/* Product quantity */}
-                    <span className="quantity"> {product.quantity} </span>
+                    <span className="quantity">
+                      <strong> {product.quantity}</strong>
+                    </span>
 
                     {/* Increasing product quantity */}
                     <button

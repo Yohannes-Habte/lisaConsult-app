@@ -101,16 +101,20 @@
 /* Labtop screen size */
 @media screen and (min-width: 1024px) {
   .footer {
+    width: 100%;
     .footer-sections-container {
+      width: $mobile;
+      margin: auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       column-gap: 1rem;
+      padding-bottom: 1rem;
 
       .footer-sitemap,
       .footer-company,
       .footer-social,
       .footer-contact {
-        padding: 0 6rem;
+        padding: 0 1rem;
       }
     }
     .footer-copyright {
