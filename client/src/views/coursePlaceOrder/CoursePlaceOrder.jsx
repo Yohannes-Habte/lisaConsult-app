@@ -14,6 +14,13 @@ const COURSE_ORDER = {
   ORDER_FAIL: 'ORDER_FAIL',
 };
 
+// Object for placing an order
+const PAYMENT_ACTION = {
+  PAYMENT_REQUEST: 'ORDER_REQUEST',
+  PAYMENT_SUCCESS: 'PAYMENT_SUCCESS',
+  PAYMENT_FAIL: 'PAYMENT_FAIL',
+};
+
 // Initial state
 const initialState = {
   loading: false,
@@ -22,11 +29,20 @@ const initialState = {
 // reducer function
 const reducer = (state, action) => {
   switch (action.type) {
+    // Order
     case COURSE_ORDER.ORDER_REQUEST:
       return { ...state, loading: true };
     case COURSE_ORDER.ORDER_SUCCESS:
       return { ...state, loading: false };
     case COURSE_ORDER.ORDER_FAIL:
+      return { ...state, loading: false };
+    // Payment
+
+    case PAYMENT_ACTION.PAYMENT_REQUEST:
+      return { ...state, loading: true };
+    case PAYMENT_ACTION.PAYMENT_SUCCESS:
+      return { ...state, loading: false };
+    case PAYMENT_ACTION.PAYMENT_FAIL:
       return { ...state, loading: false };
     default:
       return state;
@@ -86,12 +102,15 @@ const CoursePlaceOrder = () => {
       dispatch({ type: COURSE_ORDER.ORDER_SUCCESS });
 
       localStorage.setItem('courseOrder', JSON.stringify(data));
+
+      navigate("/stripePayment")
     } catch (error) {
       console.log(error);
       dispatch({ type: COURSE_ORDER.ORDER_FAIL });
     }
   };
 
+ 
   return (
     <main className="course-order-page">
       <Helmet>
@@ -104,7 +123,7 @@ const CoursePlaceOrder = () => {
           <div className="order-address-payment">
             {/* Course Order */}
             <article className="course-order">
-              <h4 className='subTitle'>Course Information</h4>
+              <h4 className="subTitle">Course Information</h4>
               <p>
                 <strong>Name:</strong> {course.name}
               </p>
@@ -113,11 +132,14 @@ const CoursePlaceOrder = () => {
                 <strong>Start on:</strong> {course.start}
               </p>
 
-              <NavLink to={'/course'} className={"edit"}> Edit</NavLink>
+              <NavLink to={'/course'} className={'edit'}>
+                {' '}
+                Edit
+              </NavLink>
             </article>
             {/* Shipping Address */}
             <article className="student-address">
-              <h4 className='subTitle'> Student Address</h4>
+              <h4 className="subTitle"> Student Address</h4>
 
               <ul>
                 <li>
@@ -146,21 +168,27 @@ const CoursePlaceOrder = () => {
               </p>
               <p></p>
 
-              <NavLink to={'/studentAddress'} className={"edit"}> Edit</NavLink>
+              <NavLink to={'/studentAddress'} className={'edit'}>
+                {' '}
+                Edit
+              </NavLink>
             </article>
 
             {/* Payment Method */}
             <article className="payment-method">
-              <h4 className='subTitle'>Payment Method</h4>
+              <h4 className="subTitle">Payment Method</h4>
               <p>
                 <strong>Method:</strong> {paymentMethod}
               </p>
-              <NavLink to={'/coursPayment'}  className={"edit"}> Edit</NavLink>
+              <NavLink to={'/coursPayment'} className={'edit'}>
+                {' '}
+                Edit
+              </NavLink>
             </article>
           </div>
 
           <article className="course-order-summary">
-            <h4 className='subTitle'>Course Order Summary</h4>
+            <h4 className="subTitle">Course Order Summary</h4>
             <div className="course-price">
               <p className="price"> Course Price: </p>
               <p className="price"> Course Tax: </p>
@@ -172,12 +200,18 @@ const CoursePlaceOrder = () => {
               Submit Order
             </button>
 
-            <article className='support'>
-              <h4 className='title'>Do You Need Support?</h4>
-              <p>If you need suport, click on <NavLink to={"/contact"} className="link"> Help Me </NavLink> </p>
+            <article className="support">
+              <h4 className="title">Do You Need Support?</h4>
+              <p>
+                If you need suport, click on{' '}
+                <NavLink to={'/contact'} className="link">
+                  {' '}
+                  Help Me{' '}
+                </NavLink>{' '}
+              </p>
             </article>
-            <article className='success'>
-              <h4 className='title'> Celebrate Your Success! </h4>
+            <article className="success">
+              <h4 className="title"> Celebrate Your Success! </h4>
               <p> Your dream comes true. Congratulation! </p>
             </article>
           </article>

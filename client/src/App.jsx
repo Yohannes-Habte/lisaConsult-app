@@ -27,6 +27,7 @@ import CourseRegistration from './views/courseRegistrationPage/CourseRegistratio
 import StudentAddress from './views/studentAddressPage/StudentAddress';
 import CoursePayment from './views/coursePaymentPage/CoursePayment';
 import CoursePlaceOrder from './views/coursePlaceOrder/CoursePlaceOrder';
+import StripePayment from './views/courseStripePayment/StripePayment';
 
 export const myContext = React.createContext();
 
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/studentAddress" element={<StudentAddress />} />
           <Route path="/coursPayment" element={<CoursePayment />} />
           <Route path="/coursePlaceOrder" element={<CoursePlaceOrder />} />
+          <Route path="/stripePayment" element={<StripePayment />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/research" element={<Research />} />

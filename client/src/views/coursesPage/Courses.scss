@@ -1,4 +1,6 @@
 @import "../../styles/Variables.scss";
+@import "../../styles/Mixins.scss";
+
 
 .servicePage-container {
   width: $mobile;
@@ -18,9 +20,7 @@
 
   .courses-container {
     .course {
-      padding: 1rem 2rem;
-      box-shadow: 0 0 2px;
-      border-radius: 0.2rem;
+      @include shadow;
 
       .course-title {
         font-size: 1.8rem;
@@ -37,17 +37,7 @@
         margin: 2rem 0 1rem 0;
 
         .join-link {
-          padding: 0.5rem 1rem;
-          font-size: 2rem;
-          background-color: $buttonbg;
-          border-radius: 0.3rem;
-          cursor: pointer;
-          transition: 0.8s;
-
-          &:hover {
-            background-color: $button-hover;
-            color: $color;
-          }
+          @include btn1;
         }
       }
     }

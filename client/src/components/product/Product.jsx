@@ -40,20 +40,23 @@ const Product = ({ product }) => {
         </NavLink>
       </figure>
 
-      <h2 className="product-title">
-        <NavLink to={`/products/${product._id}`}>{product.name}</NavLink>
-      </h2>
+      <article className="product-name-price">
+        <h2 className="product-title">
+          <NavLink to={`/products/${product._id}`}>{product.name}</NavLink>{' '}
+        </h2>
+        <span className="price"> ${product.price} </span>
+      </article>
 
-      <div className="price-rating-btn">
+      <div className="rating-btn">
+      
         {/* //& If there is not product in the stock, the button is disabled. If there is product, the button is active */}
         {product.countInStock === 0 ? (
-          <button disabled> Out of Stock </button>
+          <button disabled className="product-btn"> Out of Stock </button>
         ) : (
           <button onClick={() => addToCart(product)} className="product-btn">
             Add to Cart
           </button>
         )}
-        <span className="price"> ${product.price} </span>
         <Rating rating={product.rating} />
       </div>
 
