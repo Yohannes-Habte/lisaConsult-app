@@ -1,18 +1,17 @@
 import React, { useContext, useRef, useState } from 'react';
 import './Login.scss';
+import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { Helmet } from 'react-helmet-async';
-import axios from 'axios';
-import { USER_ACTION } from '../../context/User/UserReducer';
-import { UserContext } from '../../context/User/UserProvider';
+import { ADMIN_ACTION, AdminContext } from '../../context/admin/AdminProvider';
 
 const Login = () => {
   const navigate = useNavigate();
 
   // Global state variables
-  const { user, dispatch } = useContext(UserContext);
+  const { loading, error, dispatch } = useContext(AdminContext);
 
   // State variables
   const [email, setEmail] = useState('');
@@ -36,7 +35,7 @@ const Login = () => {
   };
 
   // Function to update login user data
-  const updateUserLoginData = (event) => {
+  const updateData = (event) => {
     switch (event.target.name) {
       case 'email':
         setEmail(event.target.value);
@@ -60,35 +59,38 @@ const Login = () => {
   };
 
   // Login and Submit Function
-  const submitUserLogin = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    dispatch({ type: ADMIN_ACTION.LOGIN_START });
     try {
       // The body
-      const loginUser = {
+      const currentUser = {
         email: email,
         password: password,
       };
 
-      // Settings
-      const settings = {
-        headers: {
-          authorization: `Bearer ${user.token}`,
-        },
-      };
-
       const { data } = await axios.post(
         process.env.REACT_APP_SERVER_URL + '/api/users/login',
-        loginUser,
-        settings
+        currentUser
       );
-      dispatch({ type: USER_ACTION.SIGNIN, payload: data });
 
-      // Save logged in user in the local storage
-      localStorage.setItem('user', JSON.stringify(data));
+      if (data.isAdmin) {
+        dispatch({ type: ADMIN_ACTION.LOGIN_SUCCESS, payload: data.details });
+        navigate('/');
+        // Save admin in the local storage 
+        localStorage.setItem("user", JSON.stringify(data.details))
+      } else {
+        dispatch({
+          type: ADMIN_ACTION.LOGIN_FAILED,
+          payload: { message: 'You are unauthorized!' },
+        });
+      }
 
-      navigate('/');
-    } catch (err) {}
+      resetVariables();
+    } catch (err) {
+      dispatch({type: ADMIN_ACTION.LOGIN_FAILED, payload: error.data})
+    }
   };
 
   return (
@@ -102,22 +104,20 @@ const Login = () => {
         </figure>
         <fieldset className="login-fieldset">
           <legend className="login-legend"> Admin Login </legend>
-          <form onSubmit={submitUserLogin} className="login-form">
+          <form onSubmit={handleSubmit} className="login-form">
             <div className="input-container">
               <FaUserAlt className="icon" />
               <input
                 type="email"
                 name="email"
-                autoComplete="of"
                 value={email}
-                onChange={updateUserLoginData}
+                onChange={updateData}
                 onBlur={checkEmailFormat}
                 placeholder="Enter Email"
                 className="input-field"
               />
               <label htmlFor="" className="input-label">
-                {' '}
-                Email Address{' '}
+                Email Address
               </label>
               <div
                 className={
@@ -139,15 +139,13 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
-                autoComplete="off"
                 value={password}
-                onChange={updateUserLoginData}
+                onChange={updateData}
                 placeholder="Enter Password"
                 className="input-field"
               />
               <label htmlFor="" className="input-label">
-                {' '}
-                Password{' '}
+                Password
               </label>
             </div>
 
@@ -161,7 +159,12 @@ const Login = () => {
                 <span>Keep me signed in</span>
               </div>
               <div className="forget-password">
-                <a href=""> Forget your password? </a>
+                <a
+                  href="https://www.youtube.com/watch?v=k3Vfj-e1Ma4&t=10686s"
+                  className="link"
+                >
+                  Forget your password?
+                </a>
               </div>
             </div>
 

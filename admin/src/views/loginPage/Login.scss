@@ -171,7 +171,7 @@
     }
 
     .login-container {
-      width: 50%;
+      width: 40%;
       margin: auto;
       border: 1px solid $title;
 
@@ -181,7 +181,7 @@
       }
 
       .login-fieldset {
-        width: 90%;
+        width: 95%;
         margin: auto;
 
         .login-form {
@@ -193,20 +193,30 @@
 
             .login-checkbox-keep-signed-in {
               margin-top: 1rem;
+
+              // styling the checkbox
+              .login-checkbox[type='checkbox'] {
+                height: 20px;
+                display: flex;
+                align-items: center;
+              }
+            }
+
+            .forget-password {
+              display: flex;
+              align-items: center;
+              padding: 1rem 0;
+
+              .link {
+                display: flex;
+                align-items: center;
+              }
             }
           }
         }
       }
     }
   }
-}
-
-// styling the checkbox
-.login-checkbox[type='checkbox'] {
-  width: 45px;
-  height: 25px;
-  display: flex;
-  align-items: center;
 }
 
 // Styling email and password validation

@@ -7,8 +7,12 @@ const userSchema = new Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    image: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    phone: { type: String, required: true },
+    address: { type: String, required: true },
+    country: { type: String, required: true },
     isAdmin: { type: Boolean, default: false},
   },
   {

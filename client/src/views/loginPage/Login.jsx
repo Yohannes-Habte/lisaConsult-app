@@ -107,7 +107,7 @@ const Login = () => {
         process.env.REACT_APP_SERVER_URL + '/api/users/login',
         loginUser
       );
-      dispatch({ type: USER_CART_ACTION.USER_SIGNIN , payload: data });
+      dispatch({ type: USER_CART_ACTION.USER_SIGNIN , payload: data.details });
       //& 1. Save user in the local storage
       localStorage.setItem('user', JSON.stringify(data));
       resetVariables();

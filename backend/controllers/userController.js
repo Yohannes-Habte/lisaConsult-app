@@ -7,7 +7,17 @@ import { generateToken } from '../middlewares/verification.js';
 // Register a new user in the database
 //===========================================================
 export const createUser = async (req, res, next) => {
-  const { firstName, lastName, email, password, isAdmin } = req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    address,
+    phone,
+    country,
+    image,
+    isAdmin,
+  } = req.body;
   try {
     const user = await User.findOne({ email: email });
 
@@ -19,22 +29,30 @@ export const createUser = async (req, res, next) => {
 
     if (!user) {
       const newUser = new User({
+        image: image,
         firstName: firstName,
         lastName: lastName,
         email: email,
         password: password,
+        phone: phone,
+        address: address,
+        country: country,
         isAdmin: isAdmin,
       });
 
-      const savedUser = await newUser.save();
+      const userSavedInDB = await newUser.save();
       res.status(201).json({
-        _id: savedUser._id,
-        firstName: savedUser.firstName,
-        lastName: savedUser.lastName,
-        email: savedUser.email,
-        isAdmin: savedUser.isAdmin,
-        token: generateToken(savedUser),
-      })
+        _id: userSavedInDB._id,
+        firstName: userSavedInDB.firstName,
+        lastName: userSavedInDB.lastName,
+        email: userSavedInDB.email,
+        image: userSavedInDB.image,
+        phone: userSavedInDB.phone,
+        address: userSavedInDB.address,
+        country: userSavedInDB.country,
+        isAdmin: userSavedInDB.isAdmin,
+        token: generateToken(userSavedInDB),
+      });
 
       // // Token
       // const token = generateToken(savedUser);
@@ -76,16 +94,17 @@ export const loginUser = async (req, res, next) => {
     }
 
     if (user && isPasswordValid) {
-      // const { password, isAdmin, ...otherDetails } = user._doc;
+      const { password, isAdmin, ...otherDetails } = user._doc;
 
       res.status(200).json({
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        isAdmin: user.isAdmin,
+        // _id: user._id,
+        // firstName: user.firstName,
+        // lastName: user.lastName,
+        // email: user.email,
+        details: { ...otherDetails },
+        isAdmin,
         token: generateToken(user),
-      })
+      });
 
       // // Token
       // const token = generateToken(user);

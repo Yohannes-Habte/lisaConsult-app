@@ -4,7 +4,7 @@
 
 .featured-chart {
   flex: 2;
-  @include box;
+  @include shadow;
 
   .total-revenue {
     display: flex;

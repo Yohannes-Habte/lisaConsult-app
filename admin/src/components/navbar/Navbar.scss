@@ -79,6 +79,21 @@
           cursor: pointer;
         }
 
+        .logout-admin {
+          position: relative;
+
+          .btn {
+            background-color: greenyellow;
+            font-size: $sfs;
+            width: fit-content;
+            height: 2.2rem;
+            border-radius: 50%;
+            padding: 0.1rem;
+            border: none;
+            cursor: pointer;
+          }
+        }
+
         .navbar-profile {
           height: 2rem;
           width: 2rem;

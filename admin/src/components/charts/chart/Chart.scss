@@ -3,7 +3,7 @@
 
 .chart {
   flex: 4;
-  @include box;
+  @include shadow;
 
   .revenue {
     text-align: center;

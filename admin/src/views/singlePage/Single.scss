@@ -16,7 +16,7 @@
 
       .left {
         flex: 1.6;
-        @include box;
+        @include shadow;
         position: relative;
 
         .edit-button { 
@@ -62,7 +62,7 @@
     }
 
     .bottom {
-      @include box;
+      @include shadow;
     }
 
     .title {

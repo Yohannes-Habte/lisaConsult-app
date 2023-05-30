@@ -6,14 +6,22 @@ import { IoMdNotifications } from 'react-icons/io';
 import { VscColorMode } from 'react-icons/vsc';
 import { BackgroundContext } from '../../context/background/BgProvider';
 import { BACKGROUND_ACTION } from '../../context/background/BgReducer';
+import { ADMIN_ACTION, AdminContext } from '../../context/admin/AdminProvider';
 
 const Navbar = () => {
   // Global variables
   const { dispatch } = useContext(BackgroundContext);
+  const { user, dispatch: adminDispatch } = useContext(AdminContext);
 
   // Change background color
   const dynamicColor = () => {
     dispatch({ type: BACKGROUND_ACTION.TOGGLE });
+  };
+
+  // Admin logout
+  const logoutAdmin = () => {
+    adminDispatch({ type: ADMIN_ACTION.ADMIN_LOG_OUT });
+    localStorage.removeItem('user');
   };
 
   return (
@@ -46,11 +54,19 @@ const Navbar = () => {
           </div>
 
           <div className="item">
-            <img
-              src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
-              alt="Profile"
-              className="navbar-profile"
-            />
+            {user ? (
+              <div className="logout-admin">
+                <button onClick={logoutAdmin} className="btn">
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <img
+                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+                alt="Profile"
+                className="navbar-profile"
+              />
+            )}
           </div>
         </div>
       </div>

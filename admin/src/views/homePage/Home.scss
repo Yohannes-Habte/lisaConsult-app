@@ -20,7 +20,7 @@
         }
 
         .list-container {
-            @include box;
+            @include shadow;
 
             .list-Title {
                 font-weight: $afw;

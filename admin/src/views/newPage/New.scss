@@ -19,7 +19,7 @@
     }
 
     .form-container {
-      @include box;
+      @include shadow;
       display: flex;
       justify-content: space-between;
 
