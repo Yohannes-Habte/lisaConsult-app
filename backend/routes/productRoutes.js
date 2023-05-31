@@ -5,7 +5,7 @@ import { adminAuth } from "../middlewares/verification.js"
 const productRouter = express.Router()
 
 // Product Routes
-productRouter.post("/createProduct", adminAuth, createProduct)
+productRouter.post("/createProduct", createProduct)
 productRouter.put("/update/:id", adminAuth, updateProduct)
 productRouter.get("/:id", getOneProduct)
 productRouter.get("/", getAllProducts)

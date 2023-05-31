@@ -9,6 +9,7 @@ import { SiLogstash } from 'react-icons/si';
 import { AiFillSetting } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineLogout } from 'react-icons/ai';
+import { MdSchool } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { BackgroundContext } from '../../context/background/BgProvider';
 import { BACKGROUND_ACTION } from '../../context/background/BgReducer';
@@ -59,6 +60,13 @@ const Sidebar = () => {
             <FaTaxi className="sidebar-icon" />
             <span className="span-text"> Delivery </span>
           </li>
+
+          <NavLink to={'/courses'}>
+            <li className="item">
+              <MdSchool className="sidebar-icon" />
+              <span className="span-text"> Courses </span>
+            </li>
+          </NavLink>
           <p className="sub-title"> Demonstration </p>
           <li className="item">
             <ImStatsBars2 className="sidebar-icon" />

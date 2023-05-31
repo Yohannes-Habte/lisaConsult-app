@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DataTable.scss';
-import { userRows } from '../../../data/dataTableSource';
-import { NavLink } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
+import { NavLink, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
-const DataTable = () => {
-  // Global state variables
-  const { data, loading, error, reFetching } = useFetch(
-    process.env.REACT_APP_SERVER_URL + '/api/users'
-  );
+const UsersTable = () => {
+  // Use location hook to specify the id of the user
+  const location = useLocation();
+  const path = location.pathname.split('/'[1]);
+  console.log(path);
+  // State variables for fetching array data
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleDelete = (id) => {
-    // setData(data.filter((item) => item.id !== id));
+  // useEffect to display users details
+  useEffect(() => {
+    const fetchingData = async () => {
+      setLoading(true);
+      try {
+        const { data } = await axios.get(
+          process.env.REACT_APP_SERVER_URL + `/api/users`
+        );
+        setData(data);
+      } catch (err) {
+        setError(err);
+      }
+      setLoading(false);
+    };
+
+    fetchingData();
+  }, []);
+
+  // Delete a user from database
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(
+        process.env.REACT_APP_SERVER_URL + `/api${path}/${id}`
+      );
+      setData(data.filter((item) => item._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -27,7 +56,7 @@ const DataTable = () => {
         <thead className="table-head">
           <tr className="table-head-row">
             <th className="head-cell"> ID </th>
-            <th className="head-cell"> User </th>
+            <th className="head-cell"> Product </th>
             <th className="head-cell"> Email </th>
             <th className="head-cell"> Phone </th>
             <th className="head-cell"> Address </th>
@@ -44,7 +73,9 @@ const DataTable = () => {
                 <td className="body-cell-image">
                   <div className="image-wrapper">
                     <img
-                      src={user.image}
+                      src={
+                        user.image || 'https://i.ibb.co/MBtjqXQ/no-avatar.gif'
+                      }
                       alt={user.firstName}
                       className="image"
                     />
@@ -63,7 +94,7 @@ const DataTable = () => {
                       View
                     </NavLink>
                     <button
-                      onClick={() => handleDelete(user.id)}
+                      onClick={() => handleDelete(user._id)}
                       className="button"
                     >
                       Delete
@@ -79,4 +110,4 @@ const DataTable = () => {
   );
 };
 
-export default DataTable;
+export default UsersTable;

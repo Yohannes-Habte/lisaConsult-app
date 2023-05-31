@@ -18,8 +18,9 @@ const courseSchema = new Schema(
   {
     name: { type: String, required: true },
     price: { type: Number, required: true },
+    language: { type: String, require: true },
     description: { type: String, required: true },
-    reviews: [reviewSchema],
+    //reviews: [reviewSchema],
   },
 
   {
@@ -27,5 +28,5 @@ const courseSchema = new Schema(
   }
 );
 
-const Course = mongoose.model('Order', courseSchema);
+const Course = mongoose.model('Course', courseSchema);
 export default Course;

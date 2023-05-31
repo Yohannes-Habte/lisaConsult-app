@@ -14,7 +14,7 @@ import { adminAuth } from '../middlewares/verification.js';
 const courseRouter = express.Router();
 
 // Routes
-courseRouter.post('/', adminAuth, registerCourse);
+courseRouter.post('/createCourse', registerCourse);
 courseRouter.put('/', adminAuth, updateCourse);
 courseRouter.get('/:id', getOneCourse);
 courseRouter.get('/', getAllCourses);

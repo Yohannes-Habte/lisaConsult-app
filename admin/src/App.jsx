@@ -7,13 +7,17 @@ import {
 } from 'react-router-dom';
 import Home from './views/homePage/Home';
 import Login from './views/loginPage/Login';
-import List from './views/listPage/List';
 import Single from './views/singlePage/Single';
-import New from './views/newPage/New';
 import { productInputs, userInputs } from './data/DataFormSource';
 import { BackgroundContext } from './context/background/BgProvider';
 import './styles/BgColor.scss';
 import { AdminContext } from './context/admin/AdminProvider';
+import UserList from './views/listPage/UserList';
+import ProductList from './views/listPage/ProductList';
+import CourseList from './views/listPage/CourseList';
+import NewCourse from './views/newPage/NewCourse';
+import NewProduct from './views/newPage/NewProduct';
+import NewUser from './views/newPage/NewUser';
 
 const App = () => {
   // Global variable
@@ -51,7 +55,7 @@ const App = () => {
                 index
                 element={
                   <ProtectedRoute>
-                    <List />
+                    <UserList />
                   </ProtectedRoute>
                 }
               />
@@ -67,19 +71,19 @@ const App = () => {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={userInputs} title="Add New User" />
+                    <NewUser />
                   </ProtectedRoute>
                 }
               />
             </Route>
 
-            {/* Product Route has further nexted route */}
-            <Route path="products">
+             {/* Product Route has further nexted route */}
+             <Route path="products">
               <Route
                 index
                 element={
                   <ProtectedRoute>
-                    <List />
+                    <ProductList />
                   </ProtectedRoute>
                 }
               />
@@ -95,7 +99,35 @@ const App = () => {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Add New Product" />
+                    <NewProduct />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
+             {/* Courses Route has further nexted route */}
+            <Route path="courses">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <CourseList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":courseId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewCourse />
                   </ProtectedRoute>
                 }
               />

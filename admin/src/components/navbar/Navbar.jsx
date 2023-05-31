@@ -7,6 +7,7 @@ import { VscColorMode } from 'react-icons/vsc';
 import { BackgroundContext } from '../../context/background/BgProvider';
 import { BACKGROUND_ACTION } from '../../context/background/BgReducer';
 import { ADMIN_ACTION, AdminContext } from '../../context/admin/AdminProvider';
+import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => {
   // Global variables
@@ -56,9 +57,8 @@ const Navbar = () => {
           <div className="item">
             {user ? (
               <div className="logout-admin">
-                <button onClick={logoutAdmin} className="btn">
-                  Logout
-                </button>
+                <span className='first-name'> {user.firstName} </span>
+                <CgProfile onClick={logoutAdmin} className="profile-icon" />
               </div>
             ) : (
               <img

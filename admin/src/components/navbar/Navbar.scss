@@ -80,17 +80,22 @@
         }
 
         .logout-admin {
-          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
 
-          .btn {
-            background-color: greenyellow;
+          .first-name {
             font-size: $sfs;
-            width: fit-content;
-            height: 2.2rem;
-            border-radius: 50%;
-            padding: 0.1rem;
-            border: none;
+          }
+
+          .profile-icon {
+            font-size: $afs;
+            color: $title;
             cursor: pointer;
+
+            &:hover {
+              color: $color;
+            }
           }
         }
 

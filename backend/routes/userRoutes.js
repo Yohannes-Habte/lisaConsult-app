@@ -17,12 +17,12 @@ const userRouter = express.Router();
 // User Routes
 userRouter.post('/register', createUser);
 userRouter.post('/login', loginUser);
-userRouter.put('/profile/update', userAuth, updateUserProfile);
-userRouter.put('/update/:id', userAuth, updateUser);
+userRouter.put('/profile/update', updateUserProfile);
+userRouter.put('/update/:id', updateUser);
 userRouter.get('/:id', userAuth, getOneUser);
 userRouter.get('/', getAllUsers);
 userRouter.get('/count/allUsers', adminAuth, countAllUsers);
-userRouter.delete('/:id', userAuth, deleteOnelUser);
+userRouter.delete('/:id', deleteOnelUser);
 userRouter.delete('/', adminAuth, deleteAlllUsers);
 
 // Export Router
