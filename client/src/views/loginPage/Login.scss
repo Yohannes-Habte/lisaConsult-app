@@ -1,14 +1,13 @@
-@import "../../styles/Variables.scss";
-@import "../../styles/Mixins.scss";
-
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
 
 .lagin-page {
   width: 100%;
-  height: 100vh;
   margin: auto;
   background-image: url(../../assets/bg-13.png);
   background-attachment: fixed;
   background-size: cover;
+  padding: 1rem;
 
   .login-title {
     @include title;
@@ -16,94 +15,138 @@
 
   .login-container {
     width: $laptop;
-    margin:1rem auto;
+    margin: 1rem auto;
     @include shadow;
 
-    .login-icon-container{
+    .login-icon-container {
       width: 24%;
       margin: auto;
       .login-icon {
         align-items: center;
-        font-size: 5rem;
+        font-size: 4rem;
         padding-top: 1rem;
         color: $title;
       }
     }
 
     .login-fieldset {
-      padding: 2rem;
+      padding: 1rem;
       border: none;
-  
+
       .login-legend {
         font-size: 2.5rem;
         text-align: center;
-        padding-top: 1rem;
         font-weight: 700;
       }
-  
+
       .login-form {
-        & input:first-child,
-        & input:nth-child(2) {
-          width: 100%;
-          padding: 0.8rem;
-          margin-bottom: 1rem;
-          border-radius: 0.5rem;
-          font-size: 1.4rem;
+        .input-container {
+          position: relative;
+          @include inputContainer;
+
+          .input-field {
+            @include inputField;
+          }
+
+          .input-label {
+            @include inputLabel;
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            color: rgba(204, 204, 204, 0);
+          }
+
+          .input-highlight {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background-color: $title;
+            transition: all 0.3s ease;
+          }
+
+          .input-field:focus + .input-label {
+            top: -20px;
+            font-size: 12px;
+            color: #007bff;
+          }
+
+          .input-field:focus + .input-label + .input-highlight {
+            width: 100%;
+          }
+
+          .icon {
+            position: absolute;
+            top: 0.1;
+            left: 0.5rem;
+            font-size: 1rem;
+          }
+
+          // displaying password
+          .password-display {
+            position: absolute;
+            top: 50%;
+            right: 3rem;
+            transform: translatey(-50%);
+            font-size: 1.3rem;
+            cursor: pointer;
+          }
         }
-  
+
         .login-checkbox-forget-password {
+          display: flex;
+          align-items: center;
           margin-bottom: 2rem;
-  
+
           .login-checkbox-keep-signed-in {
             width: 100%;
             display: flex;
             margin-top: 0.3rem;
-  
+
             & input {
               width: 20%;
             }
-  
-            & span{ 
-              font-size: 1.4rem;
+
+            & span {
+              font-size: 1.2rem;
             }
           }
-  
+
           .forget-password {
             width: $laptop;
-            margin: auto;
+            display: flex;
+            align-items: center;
           }
-  
-          & a{
-              font-size: 1.4rem;
-              color: blue;
-            }
+
+          & a {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: blue;
+          }
         }
-  
+
         .login-button {
           @include btn1;
         }
-  
+
         .haveNoAccount {
           font-size: 1.2rem;
           margin-top: 1rem;
-  
-          & a{
-              font-weight: bold;
-              color: blue;
+
+          & a {
+            font-weight: bold;
+            color: blue;
           }
         }
       }
-      
     }
   }
-
-  
 }
 
 /* Tablet screen size */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .lagin-page {
-
     .login-title {
       font-size: 2.5rem;
       text-align: center;
@@ -113,9 +156,10 @@
 
     .login-container {
       width: 80%;
-      border: 1px solid $title;
+      margin: auto;
+      @include shadow;
 
-      .login-icon-container{
+      .login-icon-container {
         width: 12%;
         margin: 2rem auto;
       }
@@ -123,14 +167,14 @@
       .login-fieldset {
         width: $laptop;
         margin: auto;
-  
+
         .login-form {
           .login-checkbox-forget-password {
             width: 100%;
             display: flex;
             justify-content: space-between;
             margin-bottom: 1rem;
-  
+
             .login-checkbox-keep-signed-in {
               margin-top: 1rem;
             }
@@ -144,7 +188,6 @@
 /* Labtop screen size */
 @media screen and (min-width: 1024px) {
   .lagin-page {
-
     .login-title {
       @include title;
     }
@@ -152,9 +195,9 @@
     .login-container {
       width: 50%;
       margin: auto;
-      border: 1px solid $title;
+      @include shadow;
 
-      .login-icon-container{
+      .login-icon-container {
         width: 12%;
         margin: auto;
       }
@@ -166,14 +209,67 @@
         .login-legend {
           font-size: $afs;
         }
-  
+
         .login-form {
+          .input-container {
+            position: relative;
+            @include inputContainer;
+
+            .input-field {
+              @include inputField;
+            }
+
+            .input-label {
+              @include inputLabel;
+              position: absolute;
+              top: 0;
+              left: 2rem;
+              color: rgba(204, 204, 204, 0);
+            }
+
+            .input-highlight {
+              position: absolute;
+              bottom: 0.5rem;
+              left: 0;
+              height: 2px;
+              width: 0;
+              background-color: $title;
+              transition: all 0.3s ease;
+            }
+
+            .input-field:focus + .input-label {
+              top: -20px;
+              font-size: 12px;
+              color: #007bff;
+            }
+
+            .input-field:focus + .input-label + .input-highlight {
+              width: 100%;
+            }
+
+            .icon {
+              position: absolute;
+              top: 0.1;
+              left: 0.5rem;
+              font-size: 1rem;
+            }
+
+            // displaying password
+            .password-display {
+              position: absolute;
+              top: 50%;
+              right: 3rem;
+              transform: translatey(-50%);
+              font-size: 1.3rem;
+              cursor: pointer;
+            }
+          }
           .login-checkbox-forget-password {
             width: 100%;
             display: flex;
             justify-content: space-between;
             margin-bottom: 1rem;
-  
+
             .login-checkbox-keep-signed-in {
               margin-top: 1rem;
             }
@@ -184,13 +280,11 @@
   }
 }
 
-
 // styling the checkbox
-.login-checkbox[type="checkbox"] {
-   width: 45px;
-   height: 25px;
-   display: flex;
-   align-items: center;
+.login-checkbox[type='checkbox'] {
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 
 // Styling email and password validation
@@ -210,4 +304,3 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
-

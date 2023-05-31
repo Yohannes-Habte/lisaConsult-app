@@ -12,6 +12,8 @@ import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
 import { toast } from 'react-toastify';
 import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
+import { MdEmail } from 'react-icons/md';
+import { RiLockPasswordFill } from 'react-icons/ri';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -107,12 +109,12 @@ const Login = () => {
         process.env.REACT_APP_SERVER_URL + '/api/users/login',
         loginUser
       );
-      dispatch({ type: USER_CART_ACTION.USER_SIGNIN , payload: data.details });
+      dispatch({ type: USER_CART_ACTION.USER_SIGNIN, payload: data.details });
       //& 1. Save user in the local storage
       localStorage.setItem('user', JSON.stringify(data));
       resetVariables();
       //! How to do dynamic navigation will be done soon
-      navigate("/")
+      navigate('/');
     } catch (err) {
       //? toast-step-3: display the err using the GetError function from the component
       toast.error(ErrorMessage(err));
@@ -125,7 +127,7 @@ const Login = () => {
         <title> Sign In </title>
       </Helmet>
 
-      <ProductCheckoutSteps step1 > </ProductCheckoutSteps>
+      <ProductCheckoutSteps step1> </ProductCheckoutSteps>
       <h1 className="login-title"> Welcome To Your Account </h1>
       <div className="login-container">
         <figure className="login-icon-container">
@@ -134,30 +136,23 @@ const Login = () => {
         <fieldset className="login-fieldset">
           <legend className="login-legend">User Login </legend>
           <form onSubmit={submitUserLogin} className="login-form">
-            <div>
+            <div className="input-container">
+              <MdEmail className="icon" />
               <input
                 type="email"
                 name="email"
                 value={email}
                 onChange={updateUserLoginData}
-                onBlur={checkEmailFormat}
                 placeholder="Enter Email"
+                className="input-field"
               />
-              <div
-                className={
-                  emailChange && email.trim().length === 0
-                    ? 'errorVisible'
-                    : 'errorInvisible'
-                }
-                ref={emailRef}
-              >
-                Email is required
-              </div>
-              <div className="errorInvisible" ref={emailRef}>
-                Incorrect email format!
-              </div>
+              <label htmlFor="" className="input-label">
+                Email Address
+              </label>
+              <span className="input-highlight"></span>
             </div>
-            <div>
+            <div className="input-container">
+              <RiLockPasswordFill className="icon" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
@@ -165,20 +160,16 @@ const Login = () => {
                 onChange={updateUserLoginData}
                 //onBlur={checkPasswordFormat}
                 placeholder="Enter Password"
+                className="input-field"
               />
+              <label htmlFor="" className="input-label">
+                Password
+              </label>
+              <span className="input-highlight"></span>
               <span onClick={displayPassword} className="password-display">
                 {showPassword ? <AiFillEyeInvisible /> : <HiOutlineEye />}
               </span>
-              {/** 
-            <div className={passwordChange && password.trim().length === 0 ? "errorVisible" : "errorInvisible"} ref={passwordRef} >
-              Password is required
-            </div>
-           
-            <div className="errorInvisible" ref={passwordRef}>
-              Password must be at least 12 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.
-            </div>
-
-            */}
+            
             </div>
             <div className="login-checkbox-forget-password">
               <div className="login-checkbox-keep-signed-in">

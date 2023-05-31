@@ -2,15 +2,16 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { FaTimes } from 'react-icons/fa';
+import { FaMapMarker, FaPhoneAlt, FaTimes, FaUserAlt } from 'react-icons/fa';
 import { BsCheck2All } from 'react-icons/bs';
+import { MdEmail, MdLocationPin } from 'react-icons/md';
+import { RiLockPasswordFill } from 'react-icons/ri';
 import './Register.scss';
 import axios from 'axios';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { toast } from 'react-toastify';
 import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import { Helmet } from 'react-helmet-async';
-import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
 
 const Register = () => {
   // to navigate register page
@@ -26,6 +27,9 @@ const Register = () => {
   const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [country, setCountry] = useState('');
   const [agree, setAgree] = useState(false);
   const [agreeChanged, setAgreeChanged] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -111,6 +115,16 @@ const Register = () => {
       case 'password':
         setPassword(event.target.value);
         break;
+
+      case 'phone':
+        setPhone(event.target.value);
+        break;
+      case 'address':
+        setAddress(event.target.value);
+        break;
+      case 'country':
+        setCountry(event.target.value);
+        break;
       case 'showPassword':
         setShowPassword(false);
         break;
@@ -160,6 +174,9 @@ const Register = () => {
     setConfirmEmail('');
     setPassword('');
     setConfirmPassword('');
+    setPhone('');
+    setAddress('');
+    setCountry('');
     setAgree(false);
     setAgreeChanged(false);
   };
@@ -168,9 +185,7 @@ const Register = () => {
   const SubmitRegisteredUser = async (event) => {
     event.preventDefault();
 
-    if (email !== confirmEmail) {
-      toast.error('Emails did not match');
-    } else if (password !== confirmPassword) {
+    if (password !== confirmPassword) {
       toast.error('Passwords did not match');
     } else {
       const userData = {
@@ -180,6 +195,9 @@ const Register = () => {
         confirmEmail: confirmEmail,
         password: password,
         confirmPassword: confirmPassword,
+        phone: phone,
+        address: address,
+        country: country,
       };
 
       try {
@@ -188,7 +206,7 @@ const Register = () => {
           userData
         );
 
-        dispatch({type: USER_CART_ACTION.USER_SIGNIN,  payload: data})
+        dispatch({ type: USER_CART_ACTION.USER_SIGNIN, payload: data });
         localStorage.setItem('user', JSON.stringify(data));
         resetAllEnteredData();
         navigate('/login');
@@ -203,7 +221,7 @@ const Register = () => {
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
-      
+
       <div className="register-form-container">
         <fieldset className="register-field">
           <legend className="register-legend"> Register </legend>
@@ -213,54 +231,70 @@ const Register = () => {
             className="register-form"
           >
             <div className="register-input-fields-container">
-              <div className="register-first-name">
+              <div className="input-container">
+                <FaUserAlt className="icon" />
                 <input
                   type="text"
                   name="firstName"
                   value={firstName}
                   onChange={update}
                   placeholder="First Name"
+                  className="input-field"
                 />
+
+                <label htmlFor="" className="input-label">
+                  First Name
+                </label>
+                <span className="input-highlight"></span>
               </div>
 
-              <div className="register-last-name">
+              <div className="input-container">
+                <FaUserAlt className="icon" />
                 <input
                   type="text"
                   name="lastName"
                   value={lastName}
                   onChange={update}
                   placeholder="Last Name"
+                  className="input-field"
                 />
+
+                <label htmlFor="" className="input-label">
+                  Last Name
+                </label>
+                <span className="input-highlight"></span>
               </div>
 
-              <div className="register-email">
+              <div className="input-container">
+                <MdEmail className="icon" />
                 <input
                   type="email"
                   name="email"
                   value={email}
                   onChange={update}
                   placeholder="Email"
+                  className="input-field"
                 />
+                <label htmlFor="" className="input-label">
+                  Email Address
+                </label>
+                <span className="input-highlight"></span>
               </div>
 
-              <div className="register-confirmEmail">
-                <input
-                  type="email"
-                  name="confirmEmail"
-                  value={confirmEmail}
-                  onChange={update}
-                  placeholder="Confirm Email"
-                />
-              </div>
-
-              <div className="register-password">
+              <div className="input-container">
+                <RiLockPasswordFill className="icon" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   value={password}
                   onChange={update}
                   placeholder="Password"
+                  className="input-field"
                 />
+                <label htmlFor="" className="input-label">
+                  Password
+                </label>
+                <span className="input-highlight"></span>
                 <span onClick={displayPassword} className="password-display">
                   {showPassword ? (
                     <AiFillEyeInvisible className="icon" />
@@ -270,20 +304,73 @@ const Register = () => {
                 </span>
               </div>
 
-              <div className="register-confirm-password">
+              <div className="input-container">
+                <RiLockPasswordFill className="icon" />
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
                   value={confirmPassword}
                   onChange={update}
                   placeholder="Confirm Password"
+                  className="input-field"
                 />
+                <label htmlFor="" className="input-label">
+                  Password
+                </label>
+                <span className="input-highlight"></span>
                 <span
                   onClick={displayConfirmPassword}
-                  className="password-display"
+                  className="confirm-password-display"
                 >
                   {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </span>
+              </div>
+
+              <div className="input-container">
+                <FaPhoneAlt className="icon" />
+                <input
+                  type="text"
+                  name="phone"
+                  value={phone}
+                  onChange={update}
+                  placeholder="Phone Number"
+                  className="input-field"
+                />
+                <label htmlFor="" className="input-label">
+                  Phone Number
+                </label>
+                <span className="input-highlight"></span>
+              </div>
+              <div className="input-container">
+                <MdLocationPin className="icon" />
+                <input
+                  type="text"
+                  name="address"
+                  value={address}
+                  onChange={update}
+                  placeholder="Street Zip-code, City"
+                  className="input-field"
+                />
+                <label htmlFor="" className="input-label">
+                  Physical Address
+                </label>
+                <span className="input-highlight"></span>
+              </div>
+
+              <div className="input-container">
+                <FaMapMarker className="icon" />
+                <input
+                  type="text"
+                  name="country"
+                  value={country}
+                  onChange={update}
+                  placeholder="Country"
+                  className="input-field"
+                />
+                <label htmlFor="" className="input-label">
+                  Country
+                </label>
+                <span className="input-highlight"></span>
               </div>
             </div>
 

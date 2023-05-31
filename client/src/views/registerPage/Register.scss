@@ -13,9 +13,7 @@
 .register-form-container {
   width: $mobile;
   margin: auto;
-  box-shadow: 0 0 3px;
-  border-radius: 0.5rem;
-  padding-bottom: 1rem;
+  @include shadow;
 
   .register-field {
     border: none;
@@ -39,8 +37,65 @@
     }
 
     .register-input-fields-container {
-      & input {
-        width: 100%;
+      .input-container {
+        position: relative;
+
+        .input-field {
+          @include inputField;
+        }
+
+        .input-label {
+          @include inputLabel;
+          position: absolute;
+          top:0;
+          left: 1.5rem;
+          color: rgba(204, 204, 204, 0);
+        }
+
+        .input-highlight {
+          position: absolute;
+          bottom: 1rem;
+          left: 0;
+          height: 2px;
+          width: 0;
+          background-color: $title;
+          transition: all 0.3s ease;
+        }
+
+        .input-field:focus + .input-label {
+          top: -20px;
+          font-size: 12px;
+          color: #007bff;
+        }
+
+        .input-field:focus + .input-label + .input-highlight {
+          width: 100%;
+        }
+
+        .icon {
+          position: absolute;
+          top: 0;
+          left: 0.5rem;
+        }
+
+        // displaying password
+        .password-display {
+          position: absolute;
+          top: 0%;
+          right: 3rem;
+          transform: translatey(-50%);
+          font-size: 1.3rem;
+          cursor: pointer;
+        }
+
+        .confirm-password-display {
+          position: absolute;
+          top: 30%;
+          right: 2rem;
+          transform: translatey(-50%);
+          font-size: 1.3rem;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -70,7 +125,7 @@
       }
 
       .register-button {
-       @include btn1;
+        @include btn1;
       }
 
       .haveAccount {
@@ -85,19 +140,17 @@
     }
     .password-preconditions {
       .password-checkbox {
-        background-color: white;
+        background-color: transparent;
         border: 1px solid $title;
         padding: 1rem;
         border-radius: 0.5rem;
 
         .text {
           line-height: 2rem;
-          font-size: 1.3rem;
+          font-size: 1rem;
           .indicator {
           }
         }
-
-        
       }
     }
   }
@@ -107,13 +160,6 @@
 .register-consent-input[type='checkbox'] {
   width: 30px;
   height: 20px;
-}
-
-// displaying password
-.password-display {
-  margin-left: -3rem;
-  font-size: 1.3rem;
-  cursor: pointer;
 }
 
 /* Tablet screen size */
@@ -137,13 +183,50 @@
           .register-input-fields-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
             column-gap: 1rem;
             row-gap: 1rem;
             padding: 1rem;
 
-            & input {
-              width: 100%;
+            .input-container {
+              position: relative;
+
+              .input-field {
+                @include inputField;
+              }
+
+              .input-label {
+                @include inputLabel;
+                position: absolute;
+                top: 0;
+                left: 1.5rem;
+                color: rgba(204, 204, 204, 0);
+              }
+
+              .input-highlight {
+                position: absolute;
+                bottom: 1rem;
+                left: 0;
+                height: 2px;
+                width: 0;
+                background-color: $title;
+                transition: all 0.3s ease;
+              }
+
+              .input-field:focus + .input-label {
+                top: -20px;
+                font-size: 12px;
+                color: #007bff;
+              }
+
+              .input-field:focus + .input-label + .input-highlight {
+                width: 100%;
+              }
+
+              .icon {
+                position: absolute;
+                top: 0;
+                left: 0.5rem;
+              }
             }
           }
         }

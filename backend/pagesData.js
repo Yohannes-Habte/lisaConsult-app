@@ -54,6 +54,38 @@ const data = {
     },
   ],
 
+  // Procedure page data
+  procedureData: [
+    {
+      step1:
+        'Create a user account by clicking on the Register button at the top right of the page',
+      step2:
+        'After you create an account, you need to Login. Then, go to the courses page, click on the button next the choice of your course.',
+      step3:
+        'In the next step, you need to proceed to your residence address page. Make sure that you fill it out correctly.',
+      step4:
+        'After you filling in the student address, select your convenient payment method.',
+      step5:
+        'In this step, your will have a look at the detail preview of your order. You can place an order and receive the order ID.',
+      step6:
+        'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
+    },
+    {
+      step1:
+        'Create a user account by clicking on the Register button at the top right of the page',
+      step2:
+        'After you create an account, you need to Login. You can select the products you want to enjoy on the "products page". On the shopping cart page you can confirm your selection. You can make changes if you wish.',
+      step3:
+        'In the next step, you need to proceed to the shipping address page. Make sure that you fill it out correctly.',
+      step4:
+        'After you filling in the shipping address, select your convenient payment method.',
+      step5:
+        'In this step, your will have a look at the detail preview of your order. You can place an order and receive the order ID.',
+      step6:
+        'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
+    },
+  ],
+
   // Serve page data
   serviceData: [
     {
