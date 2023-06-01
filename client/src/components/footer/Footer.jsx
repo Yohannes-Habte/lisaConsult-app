@@ -1,43 +1,72 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "./Footer.scss";
-import logo from "../../assets/lisaConsult-logo.png"
-import { FaGithubSquare, FaLinkedin, FaYoutube, FaFacebookSquare, FaTwitterSquare } from "react-icons/fa";
-import { MdOutlineMail, MdPhoneInTalk, MdOutlineMessage, MdLocationOn } from "react-icons/md";
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import './Footer.scss';
+import {
+  FaGithubSquare,
+  FaLinkedin,
+  FaYoutube,
+  FaFacebookSquare,
+  FaTwitterSquare,
+} from 'react-icons/fa';
+import {
+  MdOutlineMail,
+  MdPhoneInTalk,
+  MdOutlineMessage,
+  MdLocationOn,
+} from 'react-icons/md';
+import axios from 'axios';
 
 const Footer = () => {
+  // Local state variables
+  const [data, setData] = useState({});
+
+  // Display service procedures in the frontend fetched from backend
+  useEffect(() => {
+    const fetchProcedureData = async () => {
+      try {
+        const { data } = await axios.get(
+          process.env.REACT_APP_SERVER_URL + `/api/pages/footer`
+        );
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProcedureData();
+  }, []);
+
   return (
     <footer className="footer">
       <div className="footer-sections-container">
         <section className="footer-sitemap">
-          <h2> Sitemap </h2>
+          <h2> {data.sitemap} </h2>
           <ul>
-            <li> <NavLink to="/"> About </NavLink> </li>
-            <li> <NavLink to="/courses"> Service </NavLink> </li>
-            <li> <NavLink to="/research"> Research </NavLink> </li>
-            <li> <NavLink to="/courseRegistration"> Registration </NavLink> </li>
-            <li> <NavLink to="/career"> Careers </NavLink> </li>
+            <li> <NavLink to="/"> {data.home} </NavLink> </li>
+            <li> <NavLink to="/procedures"> {data.procedure} </NavLink> </li>
+            <li> <NavLink to="/products"> {data.product} </NavLink> </li>
+            <li> <NavLink to="/courses"> {data.course} </NavLink> </li>
+            <li> <NavLink to="/researches"> {data.researche} </NavLink> </li>
           </ul>
         </section>
 
         <section className="footer-company">
-          <h2> Company </h2>
+          <h2> {data.company} </h2>
           <ul>
-            <li> <NavLink to="/story"> Our Story </NavLink> </li>
-            <li> <NavLink to="/team"> Our Team </NavLink> </li>
-            <li> <NavLink to="/projects"> Projects </NavLink> </li>
-            <li> <NavLink to="/awards"> Award </NavLink> </li>
-            <li> <NavLink to="/clients"> Clients </NavLink> </li>
+            <li> <NavLink to="/story"> {data.story} </NavLink> </li>
+            <li> <NavLink to="/team"> {data.team} </NavLink> </li>
+            <li> <NavLink to="/projects"> {data.project} </NavLink> </li>
+            <li> <NavLink to="/awards"> {data.award} </NavLink> </li>
+            <li> <NavLink to="/clients"> {data.client} </NavLink> </li>
           </ul>
         </section>
 
         <section className="footer-social">
-          <h2> Social </h2>
+          <h2> {data.social} </h2>
           <ul>
-            <li> <a href="https://www.linkedin.com/in/yohannes-habtemariam/" target="_blank"> <FaLinkedin className="footer-icon"/> LinkedIn </a> </li>
+            <li> <a href="https://www.linkedin.com/in/yohannes-habtemariam/" target="_blank"> <FaLinkedin className="footer-icon"/> {data.linkedIn} </a> </li>
             <li> <a href="https://www.facebook.com/profile.php?id=100009710022882" target="_blank"> <FaFacebookSquare className="footer-icon"/> Facebook </a> </li>
-            <li> <a href="https://www.youtube.com/" target="_blank"> <FaYoutube className="footer-icon"/> YouTube </a> </li>
-            <li> <a href="https://github.com/Yohannes-Habtemariam" target="_blank"> <FaGithubSquare className="footer-icon"/> Github </a> </li>
+            <li> <a href="https://www.youtube.com/" target="_blank"> <FaYoutube className="footer-icon"/> {data.youtube} </a> </li>
+            <li> <a href="https://github.com/Yohannes-Habtemariam" target="_blank"> <FaGithubSquare className="footer-icon"/> {data.github} </a> </li>
             <li> <a href="https://twitter.com/" target="_blank"> <FaTwitterSquare className="footer-icon"/> Twitter </a> </li>
           </ul>
         </section>
@@ -45,22 +74,24 @@ const Footer = () => {
         <section className="footer-contact">
           <h2> Contact </h2>
           <ul>
-            <li> <a href="mailto:uelandrae@gmail.com"> <MdOutlineMail className="footer-icon"/> Email </a> </li>
-            <li> <a href="tel:+4917681005650"> <MdPhoneInTalk className="footer-icon"/> Call</a> </li>
-            <li> <a href="tel:+4917681005650"> <MdLocationOn className="footer-icon"/> Location</a> </li>
-            <li> <NavLink to="/contact"> <MdOutlineMessage className="footer-icon" /> Comments</NavLink> </li>
+            <li> <a href="mailto:uelandrae@gmail.com"> <MdOutlineMail className="footer-icon"/> {data.email} </a> </li>
+            <li> <a href="tel:+4917681005650"> <MdPhoneInTalk className="footer-icon"/> {data.phone} </a> </li>
+            <li> <a href="tel:+4917681005650"> <MdLocationOn className="footer-icon"/> {data.location} </a> </li>
+            <li> <NavLink to="/contact"> <MdOutlineMessage className="footer-icon" /> {data.comment} </NavLink> </li>
           </ul>
         </section>
       </div>
+
       <hr />
       <div className="footer-copyright">
-        <p className="compyright"> &copy; 2022 LisaConsult. All rights reserved! </p>
+        <p className="compyright"> &copy; {data.copyright} </p>
         <figure className="footer-logo">
-          <NavLink to="/" > <img src={logo} alt="Logo of LisaConsult" /> </NavLink>
+          <NavLink to="/" > <img src={data.logo} alt="Logo of LisaConsult" /> </NavLink>
         </figure>
       </div>
     </footer>
   );
 };
+
 
 export default Footer;

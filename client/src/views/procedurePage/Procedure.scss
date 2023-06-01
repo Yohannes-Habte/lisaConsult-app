@@ -1,7 +1,7 @@
 @import '../../styles/Variables.scss';
 @import '../../styles/Mixins.scss';
 
-.about-page {
+.procedure-page {
   width: $mobile;
   margin: 1rem auto;
   border-radius: 0.5rem;
@@ -24,7 +24,7 @@
         font-size: 1.5rem;
         text-align: center;
         padding: 1rem 0.5rem;
-        background-color:#8ba5f2;
+        background-color: #8ba5f2;
         border-radius: 0.3rem 0.3rem 0 0;
       }
 
@@ -42,7 +42,7 @@
 
 /* Tablet screen size */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .about-page {
+  .procedure-page {
     width: $tablet;
     margin: 1rem auto;
 
@@ -67,7 +67,7 @@
         .sub-title {
           font-size: 1.8rem;
           padding: 1rem 0.5rem;
-          background-color:#8ba5f2;
+          background-color: #8ba5f2;
           border-radius: 0.3rem 0.3rem 0 0;
         }
 
@@ -86,16 +86,12 @@
 
 /* Labtop screen size */
 @media screen and (min-width: 1024px) {
-  .about-page {
+  .procedure-page {
     width: $laptop;
-    height: 100vh;
     margin: 1rem auto;
 
     .about-page-title {
-      font-size: 2.5rem;
-      text-align: center;
-      color: $header-color;
-      padding: 2rem;
+      @include title;
     }
 
     .procedures-of-getting-services {
@@ -106,29 +102,85 @@
       column-gap: 2rem;
 
       .specific-service-procedure {
+        position: relative;
         @include shadow;
 
         .sub-title {
-          font-size: 1.8rem;
-          padding: 1rem 0.5rem;
-          background-color:#8ba5f2;
-          border-radius: 0.3rem 0.3rem 0 0;
+          @include shadow;
+          font-size: 1.3rem;
         }
 
         .step {
-          padding: 0.5rem 1rem;
-          font-size: 1.3rem;
+          @include step;
+          color: blue;
+
+          .procedure-title {
+            font-size: $afs;
+          }
+
+          .icon-up {
+            color: $color;
+            cursor: pointer;
+            font-size: 1.4rem;
+          }
+          .icon-down {
+            color: $title;
+            cursor: pointer;
+            font-size: 1.4rem;
+          }
+        }
+
+        .display-step-one {
+          position: absolute;
+          bottom: 52%;
+          right: 1rem;
+          width: 88%;
+          @include step;
           
+        }
 
-          & span {
-            color: #3f2bf3;
-            font-weight: bold;
-          }
+        .display-step-two {
+          position: absolute;
+          bottom: 34%;
+          right: 1rem;
+          width: 88%;
+          @include step;
+        }
 
-          & a {
-            color: red;
-            text-decoration: underline;
-          }
+        .display-step-three {
+          position: absolute;
+          bottom: 25%;
+          right: 1rem;
+          width: 88%;
+          @include step;
+        }
+
+        .display-step-four {
+          position: absolute;
+          bottom: 12%;
+          right: 1rem;
+          width: 88%;
+          @include step;
+        }
+
+        .display-step-five {
+          position: absolute;
+          bottom: -6%;
+          right: 1rem;
+          width: 88%;
+          @include step;
+        }
+
+        .display-step-six {
+          position: absolute;
+          bottom: -14%;
+          right: 1rem;
+          width: 88%;
+          @include step;
+        }
+
+        .hide {
+          display: none;
         }
       }
     }

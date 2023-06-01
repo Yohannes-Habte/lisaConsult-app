@@ -1,10 +1,10 @@
 @import '../../Styles/Variables.scss';
 @import '../../Styles/Mixins.scss';
 
-.course-order-page {
+.stripe-payment-page {
   width: 100%;
   max-width: 1024px;
-  margin:auto;
+  margin: auto;
   background-color: #ffff;
 
   .course-order-container {
@@ -70,7 +70,6 @@
         font-size: 1.4rem;
         margin-bottom: 1rem;
         color: $title;
-            
       }
 
       .course-order-summary {
@@ -78,29 +77,21 @@
         @include shadow;
 
         .course-price {
-            margin-bottom: 1rem
+          margin-bottom: 1rem;
         }
 
-        .course-order-btn {
+        .payment {
+          margin-top: 2rem;
+
+          .course-order-btn {
             @include btn1;
-        }
-
-        .support {
-          margin: 2rem 0;
-
-          .link{
-            color: blue;
-            text-decoration: underline;
-
-            &:hover {
-              color: $color;
-            }
           }
         }
 
         .title {
           font-size: $afs;
           margin: 0.5rem 0;
+          color: $title;
         }
       }
     }

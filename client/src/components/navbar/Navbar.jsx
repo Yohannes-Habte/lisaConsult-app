@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
-import lisaConsultLog from '../../assets/lisaConsult-logo.png';
-import successfulInvestor from '../../assets/investing.png';
 import SearchBar from '../searchBar/SearchBar';
 import { useContext } from 'react';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import { FaUserCircle } from 'react-icons/fa';
 import Dropdown from '../dropdown/Dropdown';
+import axios from 'axios';
 
 const Navbar = () => {
   // Global state variables
@@ -16,6 +15,23 @@ const Navbar = () => {
   // Local state Variables
   const [clicked, setClicked] = useState(false);
   const [open, setOpen] = useState(false);
+  // Local state variables
+  const [data, setData] = useState({});
+
+  // Display service procedures in the frontend fetched from backend
+  useEffect(() => {
+    const fetchProcedureData = async () => {
+      try {
+        const { data } = await axios.get(
+          process.env.REACT_APP_SERVER_URL + `/api/pages/footer`
+        );
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProcedureData();
+  }, []);
 
   const handleClickChange = () => setClicked(!clicked);
 
@@ -74,7 +90,7 @@ const Navbar = () => {
             <NavLink to="/">
               <img
                 className="mission-logo"
-                src={lisaConsultLog}
+                src={data.logo}
                 alt="LisaConsult Logo"
               />
             </NavLink>
@@ -88,7 +104,7 @@ const Navbar = () => {
             <NavLink to="/">
               <img
                 className="successful-investor"
-                src={successfulInvestor}
+                src={data.investment}
                 alt="Logo"
               />
             </NavLink>

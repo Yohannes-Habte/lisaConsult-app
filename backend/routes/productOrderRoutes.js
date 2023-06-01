@@ -16,7 +16,7 @@ import { adminAuth, userAuth } from '../middlewares/verification.js';
 const productOrderRouter = express.Router();
 
 // Order Routes
-productOrderRouter.post('/', userAuth, placeOrder);
+productOrderRouter.post('/', placeOrder);
 productOrderRouter.put('/:id', updateOrder);
 productOrderRouter.get('/:id', getOneOrder);
 productOrderRouter.get("/user/orders", userAuth, singleUserOrders)

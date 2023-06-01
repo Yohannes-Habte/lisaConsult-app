@@ -18,13 +18,13 @@ export const placeOrder = async (req, res, next) => {
       shippingPrice: req.body.shippingPrice,
       taxPrice: req.body.taxPrice,
       totalPrice: req.body.totalPrice,
-      user: req.user._id, //! I will do it later on
+      // user: req.user._id,
     });
 
     const productOrder = await newProductOrder.save();
     res
       .status(201)
-      .send({ message: 'New Product Order Created:', productOrder });
+      .send({ message: 'New Product Order is:', productOrder });
   } catch (error) {
     console.log(error);
     next(createError(404, 'Product Order is not placed. Please try again?'));

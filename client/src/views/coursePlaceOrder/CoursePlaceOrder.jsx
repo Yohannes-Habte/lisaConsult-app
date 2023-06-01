@@ -87,16 +87,16 @@ const CoursePlaceOrder = () => {
       dispatch({ type: COURSE_ORDER.ORDER_REQUEST });
 
       // Authorization is used to identify a hacker or lawful logged in user
-      const settings = {
-        headers: {
-          authorization: `Bearer ${user.token}`,
-        },
-      };
+      // const settings = {
+      //   headers: {
+      //     authorization: `Bearer ${user.token}`,
+      //   },
+      // };
 
       const { data } = await axios.post(
         process.env.REACT_APP_SERVER_URL + '/api/courseRegistrations',
         newOrder,
-        settings
+        //settings
       );
       contextDispatch({ type: COURSE_ACTION.ADD_COURSE, payload: data });
       dispatch({ type: COURSE_ORDER.ORDER_SUCCESS });

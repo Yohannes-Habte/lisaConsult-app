@@ -11,7 +11,7 @@ export const courseRegistration = async (req, res, next) => {
       course: course,
       studentAddress: studentAddress,
       paymentMethod: paymentMethod,
-      user: req.user._id,
+      // user: req.user._id,
     });
 
     const saveCourseOrder = await courseOrder.save();

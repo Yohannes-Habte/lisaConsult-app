@@ -13,6 +13,10 @@ export const generateToken = (user) => {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
+      image: user.image,
+      phone: user.phone,
+      address: user.address,
+      country: user.country,
     },
     process.env.JWT_SECRET,
     { expiresIn: '1d' }
@@ -45,7 +49,6 @@ export const userAuth = async (req, res, next) => {
       res.status(401);
       throw new Error('User is not authorized!');
     }
-    
   } catch (err) {
     console.log(err);
   }

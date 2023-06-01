@@ -41,6 +41,7 @@ export const createUser = async (req, res, next) => {
       });
 
       const userSavedInDB = await newUser.save();
+
       res.status(201).json({
         _id: userSavedInDB._id,
         firstName: userSavedInDB.firstName,
@@ -101,6 +102,12 @@ export const loginUser = async (req, res, next) => {
         // firstName: user.firstName,
         // lastName: user.lastName,
         // email: user.email,
+        // image: user.image,
+        // phone: user.phone,
+        // address: user.address,
+        // country: user.country,
+        // isAdmin: user.isAdmin,
+
         details: { ...otherDetails },
         isAdmin,
         token: generateToken(user),

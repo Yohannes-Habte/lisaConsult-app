@@ -84,11 +84,11 @@ const Placeorder = () => {
       };
 
       // Authorization is used to identify a hacker or lawful logged in user
-      const settings = {
-        headers: {
-          authorization: `Bearer ${user.token}`,
-        },
-      };
+      // const settings = {
+      //   headers: {
+      //     authorization: `Bearer ${user.token}`,
+      //   },
+      // };
 
       // Request an order
       dispatch({ type: PLACING_ORDER.ORDER_REQUEST });
@@ -96,7 +96,7 @@ const Placeorder = () => {
       const { data } = await axios.post(
         process.env.REACT_APP_SERVER_URL + '/api/productOrders',
         newOrder,
-        settings
+        
       );
 
       // Clear the cart after placing an order

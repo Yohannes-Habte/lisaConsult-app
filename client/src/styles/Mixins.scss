@@ -9,17 +9,26 @@
 
 @mixin shadow {
   padding: 1rem;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  box-shadow: #43475545 0px 0px 0.25em,
+    #5a7dbc0d 0px 0.25em 1em;
   border-radius: $radius;
   line-height: 1.5rem;
 }
 
 @mixin shadow2 {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: #63636333 0px 2px 8px 0px;
   padding: 1rem;
   border-radius: $radius;
   line-height: 1.5rem;
+}
+
+@mixin shadow3 {
+  box-shadow: #7f83f3 0px 0px 0px 3px, #83f681 0px 0px 0px 6px,
+    #f8e47e 0px 0px 0px 9px, #eca1c4 0px 0px 0px 12px,
+    #8ba1eb 0px 0px 0px 15px;
+    margin-bottom: 2rem;
+    border-radius: $radius $radius 0 0;
+    background-color: #B0C4DE;
 }
 
 @mixin imageSize {
@@ -181,4 +190,18 @@
     display: block;
     @include label;
   }
+}
+
+@mixin step {
+  display: flex;
+  justify-content: space-between;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  margin: 1rem;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
 }

@@ -25,7 +25,7 @@ const courseRegistrationSchema = new Schema(
     paymentMethod: { type: String, required: true },
     taxPrice: { type: Number},
     totalPrice: { type: Number },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
   },

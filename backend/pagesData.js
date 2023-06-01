@@ -57,12 +57,13 @@ const data = {
   // Procedure page data
   procedureData: [
     {
+      title: 'Course Registration Procedure in LisaConsult',
       step1:
         'Create a user account by clicking on the Register button at the top right of the page',
       step2:
         'After you create an account, you need to Login. Then, go to the courses page, click on the button next the choice of your course.',
       step3:
-        'In the next step, you need to proceed to your residence address page. Make sure that you fill it out correctly.',
+        'Now, you need to proceed to your residence address page. Make sure that you fill it out correctly.',
       step4:
         'After you filling in the student address, select your convenient payment method.',
       step5:
@@ -70,13 +71,15 @@ const data = {
       step6:
         'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
     },
+
     {
+      title: 'Procedure for buying organic food at LisaConsult',
       step1:
         'Create a user account by clicking on the Register button at the top right of the page',
       step2:
-        'After you create an account, you need to Login. You can select the products you want to enjoy on the "products page". On the shopping cart page you can confirm your selection. You can make changes if you wish.',
+        'After you create an account, you need to log in. You can select meals on the product page and make changes on the shopping cart page.',
       step3:
-        'In the next step, you need to proceed to the shipping address page. Make sure that you fill it out correctly.',
+        'Now, you need to proceed to the shipping address page. Make sure that you fill it out correctly.',
       step4:
         'After you filling in the shipping address, select your convenient payment method.',
       step5:
@@ -164,6 +167,39 @@ const data = {
       },
     },
   ],
+
+  footerData: {
+    // Sitemap
+    sitemap: 'Sitemap',
+    home: 'Home',
+    procedure: 'Procedure',
+    product: 'Products',
+    course: 'Courses',
+    researche: 'Researches',
+    // Company
+    company: 'Company',
+    story: 'Our Story',
+    team: 'Our Team',
+    project: 'Projects',
+    award: 'Award',
+    client: 'Clients',
+// Social media
+    social: 'Social',
+    linkedIn: 'LinkedIn',
+    facebook: 'Facebook',
+    youtube: 'YouTube',
+    github: 'Github',
+    twitter: 'Twitter',
+// Contacts
+    contact: 'Contact',
+    email: 'Email',
+    phone: 'Call',
+    location: 'Location',
+    comment: 'Comments',
+    copyright: "2022 LisaConsult. All rights reserved!",
+    investment:"http://localhost:8888/investing.png",
+    logo:"http://localhost:8888/lisaConsult-logo.png" 
+  },
 };
 
 export default data;
