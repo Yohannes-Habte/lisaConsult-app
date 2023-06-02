@@ -14,7 +14,7 @@ import { adminAuth, userAuth } from '../middlewares/verification.js';
 const courseRegistrationRouter = express.Router();
 
 // Routes
-courseRegistrationRouter.post('/', courseRegistration);
+courseRegistrationRouter.post('/', userAuth, courseRegistration);
 courseRegistrationRouter.put('/update/:id', userAuth, updateRegistration);
 courseRegistrationRouter.get('/:id', userAuth, getRegisteredCourse);
 courseRegistrationRouter.get('/', adminAuth, getRegisteredCourses);
@@ -22,4 +22,4 @@ courseRegistrationRouter.get('/count', adminAuth, countRegisteredCourses);
 courseRegistrationRouter.delete('/:id', userAuth, deleteRegisteredCourse);
 courseRegistrationRouter.delete('/', adminAuth, deleteRegisteredCourses);
 // Export Router
-export default courseRegistrationRouter;
+export default courseRegistrationRouter; 

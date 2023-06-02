@@ -45,7 +45,7 @@ const Footer = () => {
             <li> <NavLink to="/procedures"> {data.procedure} </NavLink> </li>
             <li> <NavLink to="/products"> {data.product} </NavLink> </li>
             <li> <NavLink to="/courses"> {data.course} </NavLink> </li>
-            <li> <NavLink to="/researches"> {data.researche} </NavLink> </li>
+            <li> <NavLink to="/research"> {data.researche} </NavLink> </li>
           </ul>
         </section>
 
@@ -75,8 +75,8 @@ const Footer = () => {
           <h2> Contact </h2>
           <ul>
             <li> <a href="mailto:uelandrae@gmail.com"> <MdOutlineMail className="footer-icon"/> {data.email} </a> </li>
-            <li> <a href="tel:+4917681005650"> <MdPhoneInTalk className="footer-icon"/> {data.phone} </a> </li>
-            <li> <a href="tel:+4917681005650"> <MdLocationOn className="footer-icon"/> {data.location} </a> </li>
+            <li> <a href="tel:123-456-7890"> <MdPhoneInTalk className="footer-icon"/> {data.phone} </a> </li>
+            <li> <a href="tel:6031112298"> <MdLocationOn className="footer-icon"/> {data.location} </a> </li>
             <li> <NavLink to="/contact"> <MdOutlineMessage className="footer-icon" /> {data.comment} </NavLink> </li>
           </ul>
         </section>

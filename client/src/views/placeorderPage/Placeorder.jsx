@@ -6,7 +6,7 @@ import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import { toast } from 'react-toastify';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
 import { Helmet } from 'react-helmet-async';
-import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
+import {ProductCheckoutSteps} from '../../components/utiles/CheckoutSteps';
 import Loading from '../../components/utiles/Loading';
 import {
   GiFlowers,
@@ -84,11 +84,11 @@ const Placeorder = () => {
       };
 
       // Authorization is used to identify a hacker or lawful logged in user
-      // const settings = {
-      //   headers: {
-      //     authorization: `Bearer ${user.token}`,
-      //   },
-      // };
+      const settings = {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      };
 
       // Request an order
       dispatch({ type: PLACING_ORDER.ORDER_REQUEST });
@@ -96,7 +96,7 @@ const Placeorder = () => {
       const { data } = await axios.post(
         process.env.REACT_APP_SERVER_URL + '/api/productOrders',
         newOrder,
-        
+        settings
       );
 
       // Clear the cart after placing an order
@@ -119,7 +119,7 @@ const Placeorder = () => {
         <title>Order Preview</title>
       </Helmet>
 
-      <ProductCheckoutSteps step1 step2 step3 step4 ></ProductCheckoutSteps>
+      <ProductCheckoutSteps step1 step2 step3 step4></ProductCheckoutSteps>
 
       <section className="order-container">
         <h1 className="order-title"> General Order Preview </h1>

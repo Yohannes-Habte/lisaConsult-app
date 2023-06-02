@@ -5,12 +5,14 @@ import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import './StudentAddress.scss';
 import { COURSE_ACTION } from '../../context/course/CourseReducer';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
+import { CourseCheckoutSteps } from '../../components/utiles/CheckoutSteps';
 
 const StudentAddress = () => {
   // navigate to payment page
   const navigate = useNavigate();
   // Global state variables
-  const { studentAddress, dispatch } = useContext(CourseContext);
+  const { course, studentAddress, dispatch } = useContext(CourseContext);
   const { user } = useContext(UserCartContext);
 
   //! Local dynamic shipping address State Variables
@@ -27,12 +29,12 @@ const StudentAddress = () => {
   const [state, setState] = useState(studentAddress.state || '');
   const [country, setCountry] = useState(studentAddress.country || '');
 
-  //! When a user is not logged in, navigate to login page
+
     useEffect(() => {
-      if (!user) {
+      if (!course) {
         navigate('/course');
       }
-    }, [user, navigate]);
+    }, [course, navigate]);
 
   // Update inpute values
   const udpdateData = (e) => {
@@ -97,7 +99,7 @@ const StudentAddress = () => {
    // useEffect
    useEffect(() => {
     if (!studentAddress.address) {
-      navigate('/studentAddress');
+      navigate('/course');
     }
   }, [studentAddress, navigate]);
 
@@ -148,6 +150,11 @@ const StudentAddress = () => {
 
   return (
     <main className="student-address-page">
+      <Helmet>
+        <title> Student address </title>
+      </Helmet>
+
+      <CourseCheckoutSteps step1 step2 step3 />
       <section className="student-address-container">
         <h1 className="student-address-title"> Physical address </h1>
         <form

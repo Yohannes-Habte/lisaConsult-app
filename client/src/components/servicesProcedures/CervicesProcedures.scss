@@ -1,0 +1,154 @@
+@import '../../styles/Variables.scss';
+@import '../../styles/Mixins.scss';
+
+.procedures-of-getting-services {
+  width: $tablet;
+  margin: 1rem auto;
+
+  .specific-service-procedure {
+    @include shadow;
+
+    .sub-title {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 1rem 0.5rem;
+      background-color: #8ba5f2;
+      border-radius: 0.3rem 0.3rem 0 0;
+    }
+
+    .step {
+      padding: 0.5rem 1rem;
+
+      & span {
+        color: rgb(55, 7, 200);
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* Tablet screen size */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .procedures-of-getting-services {
+    width: 100%;
+    margin: 1rem auto;
+    line-height: 2rem;
+
+    .specific-service-procedure {
+      @include shadow;
+
+      .sub-title {
+        font-size: 1.8rem;
+        padding: 1rem 0.5rem;
+        background-color: #8ba5f2;
+        border-radius: 0.3rem 0.3rem 0 0;
+      }
+
+      .step {
+        padding: 0.5rem 1rem;
+
+        & span {
+          color: rgb(55, 7, 200);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+/* Labtop screen size */
+@media screen and (min-width: 1024px) {
+  .procedures-of-getting-services {
+    width: 100%;
+    margin: 1rem auto;
+
+    .specific-service-procedure {
+      position: relative;
+      @include shadow;
+
+      .sub-title {
+        @include shadow;
+        font-size: 1.3rem;
+      }
+
+      .step {
+        @include step;
+        color: blue;
+
+        .procedure-title {
+          font-size: $afs;
+        }
+
+        .icon-up {
+          color: $color;
+          cursor: pointer;
+          font-size: 1.4rem;
+        }
+        .icon-down {
+          color: $title;
+          cursor: pointer;
+          font-size: 1.4rem;
+        }
+      }
+
+      .display-step-one {
+        position: absolute;
+        bottom: 52%;
+        right: 1.5rem;
+        left: 1rem;
+        @include step;
+        width: 94%;
+        
+      }
+
+      .display-step-two {
+        position: absolute;
+        bottom: 34%;
+        right: 1.5rem;
+        left: 1rem;
+        @include step;
+        width: 94%;
+      }
+
+      .display-step-three {
+        position: absolute;
+        bottom: 25%;
+        right: 1.5rem;
+        left: 1rem;
+        @include step;
+        width: 94%;
+      }
+
+      .display-step-four {
+        position: absolute;
+        bottom: 12%;
+        right: 1.5rem;
+        left: 1rem;
+        @include step;
+        width: 94%;
+      }
+
+      .display-step-five {
+        position: absolute;
+        bottom: -1%;
+        right: 1.5rem;
+        left: 1rem;
+        @include step;
+        width: 94%;
+      }
+
+      .display-step-six {
+        position: absolute;
+        bottom: -14%;
+        right: 1.5rem;
+        left: 1rem;
+        @include step;
+        width: 94%;
+      }
+
+      .hide {
+        display: none;
+      }
+    }
+  }
+}

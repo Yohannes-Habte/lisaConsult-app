@@ -6,6 +6,7 @@ import { COURSE_ACTION } from '../../context/course/CourseReducer';
 import { Helmet } from 'react-helmet-async';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import './CoursePlaceOrder.scss';
+import { CourseCheckoutSteps } from '../../components/utiles/CheckoutSteps';
 
 // Object for placing an order
 const COURSE_ORDER = {
@@ -87,35 +88,36 @@ const CoursePlaceOrder = () => {
       dispatch({ type: COURSE_ORDER.ORDER_REQUEST });
 
       // Authorization is used to identify a hacker or lawful logged in user
-      // const settings = {
-      //   headers: {
-      //     authorization: `Bearer ${user.token}`,
-      //   },
-      // };
+      const settings = {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      };
 
       const { data } = await axios.post(
         process.env.REACT_APP_SERVER_URL + '/api/courseRegistrations',
         newOrder,
-        //settings
+        settings
       );
       contextDispatch({ type: COURSE_ACTION.ADD_COURSE, payload: data });
       dispatch({ type: COURSE_ORDER.ORDER_SUCCESS });
 
       localStorage.setItem('courseOrder', JSON.stringify(data));
 
-      navigate("/stripePayment")
+      navigate('/stripePayment');
     } catch (error) {
       console.log(error);
       dispatch({ type: COURSE_ORDER.ORDER_FAIL });
     }
   };
 
- 
   return (
     <main className="course-order-page">
       <Helmet>
         <title>Course order preview</title>
       </Helmet>
+
+      <CourseCheckoutSteps step1 step2 step3 step4 step5 />
 
       <section className="course-order-container">
         <h1 className="course-order-title"> General Course Order Preview </h1>
@@ -169,7 +171,6 @@ const CoursePlaceOrder = () => {
               <p></p>
 
               <NavLink to={'/studentAddress'} className={'edit'}>
-                {' '}
                 Edit
               </NavLink>
             </article>
@@ -181,7 +182,6 @@ const CoursePlaceOrder = () => {
                 <strong>Method:</strong> {paymentMethod}
               </p>
               <NavLink to={'/coursPayment'} className={'edit'}>
-                {' '}
                 Edit
               </NavLink>
             </article>
@@ -203,11 +203,10 @@ const CoursePlaceOrder = () => {
             <article className="support">
               <h4 className="title">Do You Need Support?</h4>
               <p>
-                If you need suport, click on{' '}
+                If you need suport, click on
                 <NavLink to={'/contact'} className="link">
-                  {' '}
-                  Help Me{' '}
-                </NavLink>{' '}
+                  Help Me
+                </NavLink>
               </p>
             </article>
             <article className="success">

@@ -15,21 +15,44 @@ body {
   background-size: cover;
 }
 
-// Styles for checkout steps
+//  Checkout steps for product order
 
-.checkout-steps {
+.product-order-checkout-steps{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 1rem;
 }
 
-.checkout-steps > div {
+.product-order-checkout-steps > div {
   border-bottom: 0.2rem solid #a0a0a0;
   color: #000000;
   font-size: 1rem;
 }
 
-.checkout-steps > div.active {
+.product-order-checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: $title;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+
+
+//  Checkout steps for course registration
+
+.course-registration-checkout-steps{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 1rem;
+}
+
+.course-registration-checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #000000;
+  font-size: 1rem;
+}
+
+.course-registration-checkout-steps > div.active {
   border-bottom: 0.2rem solid #f08000;
   color: $title;
   font-size: 1.3rem;

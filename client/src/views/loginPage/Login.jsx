@@ -11,7 +11,7 @@ import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
 import { toast } from 'react-toastify';
-import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
+import {ProductCheckoutSteps} from '../../components/utiles/CheckoutSteps';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 

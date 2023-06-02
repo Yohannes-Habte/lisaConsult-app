@@ -55,39 +55,35 @@ const data = {
   ],
 
   // Procedure page data
-  procedureData: [
-    {
-      title: 'Course Registration Procedure in LisaConsult',
-      step1:
-        'Create a user account by clicking on the Register button at the top right of the page',
-      step2:
-        'After you create an account, you need to Login. Then, go to the courses page, click on the button next the choice of your course.',
-      step3:
-        'Now, you need to proceed to your residence address page. Make sure that you fill it out correctly.',
-      step4:
-        'After you filling in the student address, select your convenient payment method.',
-      step5:
-        'In this step, your will have a look at the detail preview of your order. You can place an order and receive the order ID.',
-      step6:
-        'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
-    },
-
-    {
-      title: 'Procedure for buying organic food at LisaConsult',
-      step1:
-        'Create a user account by clicking on the Register button at the top right of the page',
-      step2:
-        'After you create an account, you need to log in. You can select meals on the product page and make changes on the shopping cart page.',
-      step3:
-        'Now, you need to proceed to the shipping address page. Make sure that you fill it out correctly.',
-      step4:
-        'After you filling in the shipping address, select your convenient payment method.',
-      step5:
-        'In this step, your will have a look at the detail preview of your order. You can place an order and receive the order ID.',
-      step6:
-        'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
-    },
-  ],
+  procedureData: {
+    courseStepsTitle: 'Course Registration Procedure in LisaConsult',
+    courseStep1:
+      'Create a user account by clicking on the Register button at the top right of the page',
+    courseStep2:
+      'After you create an account, you need to Login. Then, go to the courses page, click on the button next the choice of your course.',
+    courseStep3:
+      'Now, you need to proceed to your residence address page. Make sure that you fill it out correctly.',
+    courseStep4:
+      'After you filling in the student address, select your convenient payment method.',
+    courseStep5:
+      'In this step, your will have a look at the detail preview of your order. You can place an order and receive the order ID.',
+    courseStep6:
+      'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
+    // Meals
+    mealsStepsTitle: 'Meals Ordering Procedure at LisaConsult',
+    mealsStep1:
+      'Create a user account by clicking on the Register button at the top right of the page',
+    mealsStep2:
+      'After you create an account, you need to log in. You can select meals on the product page and make changes on the shopping cart page.',
+    mealsStep3:
+      'Now, you need to proceed to the shipping address page. Make sure that you fill it out correctly.',
+    mealsStep4:
+      'After you filling in the shipping address, select your convenient payment method.',
+    mealsStep5:
+      'In this step, your will have a look at the detail preview of your order. You can place an order and receive the order ID.',
+    mealsStep6:
+      'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
+  },
 
   // Serve page data
   serviceData: [
@@ -183,22 +179,22 @@ const data = {
     project: 'Projects',
     award: 'Award',
     client: 'Clients',
-// Social media
+    // Social media
     social: 'Social',
     linkedIn: 'LinkedIn',
     facebook: 'Facebook',
     youtube: 'YouTube',
     github: 'Github',
     twitter: 'Twitter',
-// Contacts
+    // Contacts
     contact: 'Contact',
     email: 'Email',
     phone: 'Call',
     location: 'Location',
     comment: 'Comments',
-    copyright: "2022 LisaConsult. All rights reserved!",
-    investment:"http://localhost:8888/investing.png",
-    logo:"http://localhost:8888/lisaConsult-logo.png" 
+    copyright: '2022 LisaConsult. All rights reserved!',
+    investment: 'http://localhost:8888/investing.png',
+    logo: 'http://localhost:8888/lisaConsult-logo.png',
   },
 };
 

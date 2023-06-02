@@ -51,7 +51,7 @@ const StripePayment = () => {
         <title> Stripe Payment </title>
       </Helmet>
       <section className="course-order-container">
-        <h1 className="course-order-title"> Course Order Summary </h1>
+        <h1 className="course-order-title"> Course Order Payment </h1>
         <div className="course-order-details">
           <div className="order-address-payment">
             {/* Course Order */}

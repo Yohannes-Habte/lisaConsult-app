@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
-import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
+import {ProductCheckoutSteps} from '../../components/utiles/CheckoutSteps';
 import './Payment.scss';
 
 const Payment = () => {

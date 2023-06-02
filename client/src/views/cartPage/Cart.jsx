@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import Message from '../../components/utiles/MessageBox';
 import { FaTrash } from 'react-icons/fa';
 import './Cart.scss';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -43,10 +44,10 @@ const Cart = () => {
 
   // Function that handle checkout
   const checkoutHandler = async () => {
-    //! Step One: check whether user is signin. If user is logged in, direct the user to shipping address. Otherwise direct the user to login page
     if (user) {
       navigate('/shipping');
     } else {
+      toast.error('Please login to proceed to next step!');
       navigate('/login');
     }
   };
@@ -61,7 +62,11 @@ const Cart = () => {
 
       {cartItems.length === 0 ? (
         <Message>
-          Cart is empty. <NavLink to={'/products'} className={"go-to-shopping"}> Go to Products Page for shopping! </NavLink>
+          Cart is empty.{' '}
+          <NavLink to={'/products'} className={'go-to-shopping'}>
+            {' '}
+            Go to Products Page for shopping!{' '}
+          </NavLink>
         </Message>
       ) : (
         <div className="cart-items-details">
@@ -79,7 +84,10 @@ const Cart = () => {
                       />
                     </figure>
                     <div className="product-name">
-                      <NavLink to={`/products/${product._id}`} className={"link"}>
+                      <NavLink
+                        to={`/products/${product._id}`}
+                        className={'link'}
+                      >
                         {product.name}
                       </NavLink>
                     </div>

@@ -8,7 +8,7 @@ import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 
 const Product = ({ product }) => {
   // Global state variables
-  const { cartItems, dispatch } = useContext(UserCartContext);
+  const { user, cartItems, dispatch } = useContext(UserCartContext);
 
   // Add to cart function from the home page
   const addToCart = async (meal) => {
@@ -48,10 +48,12 @@ const Product = ({ product }) => {
       </article>
 
       <div className="rating-btn">
-      
         {/* //& If there is not product in the stock, the button is disabled. If there is product, the button is active */}
         {product.countInStock === 0 ? (
-          <button disabled className="product-btn"> Out of Stock </button>
+          <button disabled className="product-btn">
+            {' '}
+            Out of Stock{' '}
+          </button>
         ) : (
           <button onClick={() => addToCart(product)} className="product-btn">
             Add to Cart

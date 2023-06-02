@@ -5,6 +5,7 @@ import { COURSE_ACTION } from '../../context/course/CourseReducer';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import "./CoursePayment.scss"
+import { CourseCheckoutSteps } from '../../components/utiles/CheckoutSteps';
 
 const CoursePayment = () => {
   const navigate = useNavigate();
@@ -47,10 +48,13 @@ const CoursePayment = () => {
   return (
     <main className="course-payment-page">
       <Helmet>
-        <title> Payment </title>
+        <title> Course payment </title>
       </Helmet>
+
+      <CourseCheckoutSteps step1 step2 step3 step4 />
+
       <section className="course-payment-container">
-        <h1 className="payment-title"> Payment Methods </h1>
+        <h1 className="course-payment-title"> Payment Methods </h1>
 
         <form onSubmit={submitPayment} action="" className="course-payment-form">
           <div className="payment-input">

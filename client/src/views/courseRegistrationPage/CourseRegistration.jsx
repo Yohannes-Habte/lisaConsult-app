@@ -1,20 +1,19 @@
-import React, { useState, useContext, useRef } from 'react';
-import { myContext } from '../../App';
-//import 'react-phone-number-input/style.css'
-//import PhoneInput, { formatPhoneNumber } from 'react-phone-number-input'
+import React, { useState, useContext, useEffect } from 'react';
 import './CourseRegistration.scss';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { CourseContext } from '../../context/course/CourseProvider';
 import { COURSE_ACTION } from '../../context/course/CourseReducer';
+import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
+import { CourseCheckoutSteps } from '../../components/utiles/CheckoutSteps';
 
 const CourseRegistration = () => {
   const navigate = useNavigate();
 
   // Global state variables
   const { dispatch } = useContext(CourseContext);
+  const { user } = useContext(UserCartContext);
   // State Variables
   const [name, setName] = useState('');
   const [start, setStart] = useState('');
@@ -40,13 +39,20 @@ const CourseRegistration = () => {
     setStart('');
   };
 
+  // If user does not logged in, navigate user to login page
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
   // Function to sumit user registered for a course
   const hadleSubmit = async (event) => {
     event.preventDefault();
 
     if (!name) {
       toast.error('Please enter course name!');
-    } else if(!start) {
+    } else if (!start) {
       toast.error('Please enter the starting date!');
     } else {
       try {
@@ -57,6 +63,7 @@ const CourseRegistration = () => {
         dispatch({ type: COURSE_ACTION.ADD_COURSE, payload: newCourse });
         localStorage.setItem('course', JSON.stringify(newCourse));
         navigate('/studentAddress');
+        reset();
       } catch (error) {
         console.log(error.message);
       }
@@ -68,6 +75,8 @@ const CourseRegistration = () => {
       <Helmet>
         <title> Course Registration</title>
       </Helmet>
+
+      <CourseCheckoutSteps step1 step2 /> 
 
       <h1 className="course-registration-title">
         Welcome to Your Favorite Course

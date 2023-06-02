@@ -6,7 +6,7 @@ import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import { toast } from 'react-toastify';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
 import './Shipping.scss';
-import ProductCheckoutSteps from '../../components/utiles/CheckoutSteps';
+import {ProductCheckoutSteps} from '../../components/utiles/CheckoutSteps';
 
 const Shipping = () => {
   // navigate to payment page

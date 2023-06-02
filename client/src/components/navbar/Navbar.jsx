@@ -40,6 +40,7 @@ const Navbar = () => {
     dispatch({ type: USER_CART_ACTION.USER_LOG_OUT });
     //& User-step-3: Remove user info from the browser local storage
     localStorage.removeItem('user');
+    localStorage.removeItem('cartItems');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
   };
@@ -74,7 +75,11 @@ const Navbar = () => {
               <div className="user-dropdown">
                 <span className="user-name"> {user.firstName} </span>
                 <FaUserCircle onClick={() => setOpen(!open)} className="icon" />
-                <Dropdown logoutUser={logoutUser} open={open} setOpen={setOpen} />
+                <Dropdown
+                  logoutUser={logoutUser}
+                  open={open}
+                  setOpen={setOpen}
+                />
               </div>
             ) : (
               <span className="register-login">

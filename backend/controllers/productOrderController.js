@@ -18,7 +18,7 @@ export const placeOrder = async (req, res, next) => {
       shippingPrice: req.body.shippingPrice,
       taxPrice: req.body.taxPrice,
       totalPrice: req.body.totalPrice,
-      // user: req.user._id,
+      user: req.user._id,
     });
 
     const productOrder = await newProductOrder.save();
