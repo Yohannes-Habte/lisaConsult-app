@@ -36,9 +36,9 @@ export const getProcedures = async (req, res, next) => {
 //===========================================================
 // Get data for the home page investment techniques
 //===========================================================
-export const getServicePageInfo = async (req, res, next) => {
+export const getCourseData = async (req, res, next) => {
   try {
-    res.status(200).send(data.serviceData);
+    res.status(200).send(data.courseData);
   } catch (error) {
     console.log(error);
   }

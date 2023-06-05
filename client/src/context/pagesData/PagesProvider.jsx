@@ -3,35 +3,41 @@ import ProductReducer from './Reducer';
 
 // Initial Sate Variables
 const initialState = {
-  loading: false,
   titleData: {},
   investments: [],
-  products: [], // All products for the product page
-  product: [], // Single product for the single product page
+  procedures: {},
+  courses: [],
+  products: [], 
+  product: [], 
   researches: [],
-  error: '',
+  footer: {},
+  loading: false,
+  error: ""
 };
 
-export const ServiceContext = createContext(initialState);
+export const PagesContext = createContext(initialState);
 
-const ServiceProvider = ({ children }) => {
+const PagesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductReducer, initialState);
   return (
-    <ServiceContext.Provider
+    <PagesContext.Provider
       value={{
-        investments: state.investments,
         titleData: state.titleData,
+        investments: state.investments,
+        procedures: state.procedures,
+        courses: state.courses,
         products: state.products,
         product: state.product,
         researches: state.researches,
+        footer: state.footer,
         error: state.error,
         loading: state.loading,
         dispatch,
       }}
     >
       {children}
-    </ServiceContext.Provider>
+    </PagesContext.Provider>
   );
 };
 
-export default ServiceProvider;
+export default PagesProvider;

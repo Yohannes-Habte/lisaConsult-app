@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 import './Research.scss';
 import axios from 'axios';
 import { useContext } from 'react';
-import { ServiceContext } from '../../context/investments/ServiceProvider';
-import { RESEARCH_ACTION } from '../../context/investments/Reducer';
 import { Helmet } from 'react-helmet-async';
 import Loading from '../../components/utiles/Loading';
 import Message from '../../components/utiles/MessageBox';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
+import { PagesContext } from '../../context/pagesData/PagesProvider';
+import { RESEARCH_ACTION } from '../../context/pagesData/Reducer';
 
 const Research = () => {
   // Global state variables
-  const { researches, loading, error, dispatch } = useContext(ServiceContext);
+  const { researches, loading, error, dispatch } = useContext(PagesContext);
 
   // display research page data in the frontend using useEffect hook
   useEffect(() => {
     const fetchResearchData = async () => {
-      dispatch({ try: RESEARCH_ACTION.FETCH_REQUEST });
+      dispatch({ try: RESEARCH_ACTION.FETCH_RESEARCH_REQUEST });
       try {
         const { data } = await axios.get(
           process.env.REACT_APP_SERVER_URL + `/api/pages/researches`
@@ -27,7 +27,10 @@ const Research = () => {
         });
       } catch (error) {
         console.log(error);
-        dispatch({ type: RESEARCH_ACTION.FETCH_FAIL, payload: ErrorMessage(error) });
+        dispatch({
+          type: RESEARCH_ACTION.FETCH_RESEARCH_FAIL,
+          payload: ErrorMessage(error),
+        });
       }
     };
     fetchResearchData();
@@ -52,9 +55,7 @@ const Research = () => {
                   <figure className="image-container">
                     <img src={research.image} alt={research.alt} />
                   </figure>
-                  <h2 className="research-article-title">
-                    {research.heading}
-                  </h2>
+                  <h2 className="research-article-title">{research.heading}</h2>
                   <p className="research-paragraph"> {research.paragraph} </p>
                   <ol className="research-ordered-list">
                     <li>

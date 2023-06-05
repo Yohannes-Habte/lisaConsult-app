@@ -6,12 +6,15 @@ import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { Helmet } from 'react-helmet-async';
 import { ADMIN_ACTION, AdminContext } from '../../context/admin/AdminProvider';
+import ErrorMessage from '../../utiles/ErrorMessage';
+import Loading from '../../utiles/Loading';
+import AlertMessageBox from '../../utiles/AlertMessageBox';
 
 const Login = () => {
   const navigate = useNavigate();
 
   // Global state variables
-  const { loading, error, dispatch } = useContext(AdminContext);
+  const { loading, error, user, dispatch } = useContext(AdminContext);
 
   // State variables
   const [email, setEmail] = useState('');
@@ -78,18 +81,18 @@ const Login = () => {
       if (data.isAdmin) {
         dispatch({ type: ADMIN_ACTION.LOGIN_SUCCESS, payload: data.details });
         navigate('/');
-        // Save admin in the local storage 
-        localStorage.setItem("user", JSON.stringify(data.details))
+        // Save admin in the local storage
+        localStorage.setItem('user', JSON.stringify(data.details));
       } else {
         dispatch({
           type: ADMIN_ACTION.LOGIN_FAILED,
-          payload: { message: 'You are unauthorized!' },
+          payload: alert("You are unauthorized!"),
         });
       }
 
       resetVariables();
     } catch (err) {
-      dispatch({type: ADMIN_ACTION.LOGIN_FAILED, payload: error.data})
+      dispatch({ type: ADMIN_ACTION.LOGIN_FAILED, payload: ErrorMessage(err) });
     }
   };
 
@@ -98,85 +101,92 @@ const Login = () => {
       <Helmet>
         <title> Log In </title>
       </Helmet>
-      <div className="login-container">
-        <figure className="login-icon-container">
-          <FaUserAlt className="login-icon" />
-        </figure>
-        <fieldset className="login-fieldset">
-          <legend className="login-legend"> Admin Login </legend>
-          <form onSubmit={handleSubmit} className="login-form">
-            <div className="input-container">
-              <FaUserAlt className="icon" />
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={updateData}
-                onBlur={checkEmailFormat}
-                placeholder="Enter Email"
-                className="input-field"
-              />
-              <label htmlFor="" className="input-label">
-                Email Address
-              </label>
-              <div
-                className={
-                  emailChange && email.trim().length === 0
-                    ? 'errorVisible'
-                    : 'errorInvisible'
-                }
-                ref={emailRef}
-              >
-                Email is required
-              </div>
-              <div className="errorInvisible" ref={emailRef}>
-                Incorrect email format!
-              </div>
-            </div>
-
-            <div className="input-container">
-              <RiLockPasswordFill className="icon" />
-              <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={updateData}
-                placeholder="Enter Password"
-                className="input-field"
-              />
-              <label htmlFor="" className="input-label">
-                Password
-              </label>
-            </div>
-
-            <div className="login-checkbox-forget-password">
-              <div className="login-checkbox-keep-signed-in">
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <AlertMessageBox> {error} </AlertMessageBox>
+      ) : (
+        <div className="login-container">
+          <figure className="login-icon-container">
+            <FaUserAlt className="login-icon" />
+          </figure>
+          <fieldset className="login-fieldset">
+            <legend className="login-legend"> Admin Login </legend>
+            <form onSubmit={handleSubmit} className="login-form">
+              <div className="input-container">
+                <FaUserAlt className="icon" />
                 <input
-                  type="checkbox"
-                  name="login"
-                  className="login-checkbox"
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={updateData}
+                  onBlur={checkEmailFormat}
+                  placeholder="Enter Email"
+                  className="input-field"
                 />
-                <span>Keep me signed in</span>
-              </div>
-              <div className="forget-password">
-                <a
-                  href="https://www.youtube.com/watch?v=k3Vfj-e1Ma4&t=10686s"
-                  className="link"
+                <label htmlFor="" className="input-label">
+                  Email Address
+                </label>
+                <div
+                  className={
+                    emailChange && email.trim().length === 0
+                      ? 'errorVisible'
+                      : 'errorInvisible'
+                  }
+                  ref={emailRef}
                 >
-                  Forget your password?
-                </a>
+                  Email is required
+                </div>
+                <div className="errorInvisible" ref={emailRef}>
+                  Incorrect email format!
+                </div>
               </div>
-            </div>
 
-            <div className="btn-signup-container">
-              <button className="login-button"> Log In</button>
-              <p className="haveNoAccount">
-                Don't have an account? <NavLink to="/register">Sign Up</NavLink>
-              </p>
-            </div>
-          </form>
-        </fieldset>
-      </div>
+              <div className="input-container">
+                <RiLockPasswordFill className="icon" />
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={updateData}
+                  placeholder="Enter Password"
+                  className="input-field"
+                />
+                <label htmlFor="" className="input-label">
+                  Password
+                </label>
+              </div>
+
+              <div className="login-checkbox-forget-password">
+                <div className="login-checkbox-keep-signed-in">
+                  <input
+                    type="checkbox"
+                    name="login"
+                    className="login-checkbox"
+                  />
+                  <span>Keep me signed in</span>
+                </div>
+                <div className="forget-password">
+                  <a
+                    href="https://www.youtube.com/watch?v=k3Vfj-e1Ma4&t=10686s"
+                    className="link"
+                  >
+                    Forget your password?
+                  </a>
+                </div>
+              </div>
+
+              <div className="btn-signup-container">
+                <button className="login-button"> Log In</button>
+                <p className="haveNoAccount">
+                  Don't have an account?{' '}
+                  <NavLink to="/register">Sign Up</NavLink>
+                </p>
+              </div>
+            </form>
+          </fieldset>
+        </div>
+      )}
     </main>
   );
 };

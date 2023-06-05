@@ -20,3 +20,8 @@ There are three critical steps to add item to a shopping cart:
 
 ## Free Images
 1. https://www.pexels.com/ 
+
+## Express validator
+1. https://stackabuse.com/form-data-validation-in-nodejs-with-express-validator/
+2. https://devpress.csdn.net/opensource/62f373d67e668234661868a4.html
+3. https://auth0.com/blog/express-validator-tutorial/

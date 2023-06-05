@@ -232,7 +232,7 @@ const Register = () => {
           >
             <div className="register-input-fields-container">
               <div className="input-container">
-                <FaUserAlt className="icon" />
+                <FaUserAlt className="input-icon" />
                 <input
                   type="text"
                   name="firstName"
@@ -249,7 +249,7 @@ const Register = () => {
               </div>
 
               <div className="input-container">
-                <FaUserAlt className="icon" />
+                <FaUserAlt className="input-icon" />
                 <input
                   type="text"
                   name="lastName"
@@ -266,7 +266,7 @@ const Register = () => {
               </div>
 
               <div className="input-container">
-                <MdEmail className="icon" />
+                <MdEmail className="input-icon" />
                 <input
                   type="email"
                   name="email"
@@ -282,7 +282,7 @@ const Register = () => {
               </div>
 
               <div className="input-container">
-                <RiLockPasswordFill className="icon" />
+                <RiLockPasswordFill className="input-icon" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   name="password"
@@ -305,7 +305,7 @@ const Register = () => {
               </div>
 
               <div className="input-container">
-                <RiLockPasswordFill className="icon" />
+                <RiLockPasswordFill className="input-icon" />
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
@@ -327,7 +327,7 @@ const Register = () => {
               </div>
 
               <div className="input-container">
-                <FaPhoneAlt className="icon" />
+                <FaPhoneAlt className="input-icon" />
                 <input
                   type="text"
                   name="phone"
@@ -342,7 +342,7 @@ const Register = () => {
                 <span className="input-highlight"></span>
               </div>
               <div className="input-container">
-                <MdLocationPin className="icon" />
+                <MdLocationPin className="input-icon" />
                 <input
                   type="text"
                   name="address"
@@ -358,7 +358,7 @@ const Register = () => {
               </div>
 
               <div className="input-container">
-                <FaMapMarker className="icon" />
+                <FaMapMarker className="input-icon" />
                 <input
                   type="text"
                   name="country"

@@ -85,8 +85,8 @@ const data = {
       'Eventually, a confirmation message with the relevant information will be sent to your e-mail address.',
   },
 
-  // Serve page data
-  serviceData: [
+  // Course page data
+  courseData: [
     {
       courseTitle: 'Stock Market Investment',
       firstParagraph:

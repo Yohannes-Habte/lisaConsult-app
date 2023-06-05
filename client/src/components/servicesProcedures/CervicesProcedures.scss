@@ -73,10 +73,10 @@
 
       .step {
         @include step;
-        color: blue;
 
         .procedure-title {
           font-size: $afs;
+          color: #4a4aed;
         }
 
         .icon-up {

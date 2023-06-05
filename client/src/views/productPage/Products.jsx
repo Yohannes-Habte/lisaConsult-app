@@ -1,31 +1,40 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
-import { ServiceContext } from '../../context/investments/ServiceProvider';
 import axios from 'axios';
-import { PRODUCT_ACTION } from '../../context/investments/Reducer';
 import './Products.scss';
 import { Helmet } from 'react-helmet-async';
 import Product from '../../components/product/Product';
 import Loading from '../../components/utiles/Loading';
 import Message from '../../components/utiles/MessageBox';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
+import { PagesContext } from '../../context/pagesData/PagesProvider';
+import {
+  PRODUCTS_ACTION,
+  PRODUCT_ACTION,
+} from '../../context/pagesData/Reducer';
 
 const Products = () => {
   // Global state variables
-  const { loading, products, error, dispatch } = useContext(ServiceContext);
+  const { loading, products, error, dispatch } = useContext(PagesContext);
 
   // Display product in the users
   useEffect(() => {
     const fetchProducts = async () => {
-      dispatch({ type: PRODUCT_ACTION.FETCH_REQUEST });
+      // dispatch({ type: PRODUCT_ACTION.FETCH_REQUEST });
       try {
         const { data } = await axios.get(
           process.env.REACT_APP_SERVER_URL + `/api/products`
         );
-        dispatch({ type: PRODUCT_ACTION.FETCH_PRODUCT_SUCCESS, payload: data });
+        dispatch({
+          type: PRODUCTS_ACTION.FETCH_PRODUCTS_SUCCESS,
+          payload: data,
+        });
       } catch (error) {
         console.log(error);
-        dispatch({ type: PRODUCT_ACTION.FETCH_FAIL, payload: ErrorMessage(error) });
+        dispatch({
+          type: PRODUCTS_ACTION.FETCH_PRODUCTS_FAIL,
+          payload: ErrorMessage(error),
+        });
       }
     };
     fetchProducts();
@@ -36,8 +45,8 @@ const Products = () => {
       <Helmet>
         <title> Products </title>
       </Helmet>
-      <section className='organic-foods-container'>
-        <h1 className='meals-title'> Organic Delicious Meals</h1>
+      <section className="organic-foods-container">
+        <h1 className="meals-title"> Organic Delicious Meals</h1>
 
         {loading ? (
           <Loading />

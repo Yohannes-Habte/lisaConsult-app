@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Procedure.scss';
 import { Helmet } from 'react-helmet-async';
 import CourseServiceSteps from '../../components/servicesProcedures/CourseServiceSteps';

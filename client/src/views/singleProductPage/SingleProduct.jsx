@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { ServiceContext } from '../../context/investments/ServiceProvider';
 import axios from 'axios';
-import { SINGLE_PRODUCT_ACTION } from '../../context/investments/Reducer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/utiles/Loading';
 import Message from '../../components/utiles/MessageBox';
@@ -10,28 +8,31 @@ import ErrorMessage from '../../components/utiles/ErrorMessage';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { USER_CART_ACTION } from '../../context/userAndCart/UserCartReducer';
 import './SingleProduct.scss';
+import { PagesContext } from '../../context/pagesData/PagesProvider';
+import { PRODUCT_ACTION } from '../../context/pagesData/Reducer';
 
 const SingleProduct = () => {
   // Navigate
   const navigate = useNavigate();
   // Global state variables
-  const { loading, product, error, dispatch } = useContext(ServiceContext);
+  const { product, dispatch } = useContext(PagesContext);
   const { cart, dispatch: userCartDispatch } = useContext(UserCartContext);
 
   // Display the product in the frontend
   useEffect(() => {
     const fetchProduct = async () => {
-      dispatch({ type: SINGLE_PRODUCT_ACTION.FETCH_FAIL });
+      dispatch({ type: PRODUCT_ACTION.FETCH_PRODUCT_REQUEST });
+
       try {
         const { data } = await axios.get(
           process.env.REACT_APP_SERVER_URL + `/api/products/${productId}`
         );
 
-        dispatch({ type: SINGLE_PRODUCT_ACTION.FETCH_SUCCESS, payload: data });
+        dispatch({ type: PRODUCT_ACTION.FETCH_PRODUCT_SUCCESS, payload: data });
       } catch (error) {
         console.log(error);
         dispatch({
-          type: SINGLE_PRODUCT_ACTION.FETCH_FAIL,
+          type: PRODUCT_ACTION.FETCH_PRODUCT_FAIL,
           payload: ErrorMessage(error),
         });
       }
@@ -74,17 +75,17 @@ const SingleProduct = () => {
   return (
     <main className="single-product-page">
       <section className="single-product-container">
-        {loading ? (
+        {'loading' ? (
           <Loading />
-        ) : error ? (
-          <Message variant="danger"> {error} </Message>
+        ) : 'error' ? (
+          <Message variant="danger"> {'error'} </Message>
         ) : (
           <div className="single-product">
             <figure className="product-image">
               <img src={product.image} alt={product.name} className="image" />
             </figure>
 
-            <article className='single-product-details'>
+            <article className="single-product-details">
               <h1 className="single-product-nane"> {product.name} </h1>
               <span className="rating-container">
                 Rating: <Rating rating={product.rating} />

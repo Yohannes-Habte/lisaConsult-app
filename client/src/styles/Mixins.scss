@@ -9,8 +9,7 @@
 
 @mixin shadow {
   padding: 1rem;
-  box-shadow: #43475545 0px 0px 0.25em,
-    #5a7dbc0d 0px 0.25em 1em;
+  box-shadow: #43475545 0px 0px 0.25em, #5a7dbc0d 0px 0.25em 1em;
   border-radius: $radius;
   line-height: 1.5rem;
 }
@@ -24,11 +23,10 @@
 
 @mixin shadow3 {
   box-shadow: #7f83f3 0px 0px 0px 3px, #83f681 0px 0px 0px 6px,
-    #f8e47e 0px 0px 0px 9px, #eca1c4 0px 0px 0px 12px,
-    #8ba1eb 0px 0px 0px 15px;
-    margin-bottom: 2rem;
-    border-radius: $radius $radius 0 0;
-    background-color: #B0C4DE;
+    #f8e47e 0px 0px 0px 9px, #eca1c4 0px 0px 0px 12px, #8ba1eb 0px 0px 0px 15px;
+  margin-bottom: 2rem;
+  border-radius: $radius $radius 0 0;
+  background-color: #b0c4de;
 }
 
 @mixin imageSize {
@@ -59,8 +57,6 @@
 // Form input and label
 @mixin inputContainer {
   width: 100%;
-  margin: 0.5rem;
-  padding: 0.5rem;
   display: flex;
   align-items: center;
 }
@@ -68,19 +64,13 @@
 @mixin inputField {
   display: block;
   width: 100%;
-  padding: 10px;
   font-size: 1rem;
   border: none;
   border-bottom: 2px solid #ccc;
   outline: none;
   background-color: transparent;
-  padding: 0.2rem 2rem;
-}
-
-@mixin inputLabel {
-  font-size: 1rem;
-  pointer-events: none;
-  transition: all 0.3s ease;
+  padding: 1rem 2rem;
+  margin-bottom: 0.2rem;
 }
 
 @mixin btn1 {
@@ -201,7 +191,7 @@
   margin: 1rem 0;
   font-size: 18px;
   border-radius: 0.5em;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid #e8e8e8;
   transition: all 0.3s;
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
@@ -215,6 +205,6 @@
   color: #646464;
   padding: 0.7rem 1rem;
   border-radius: 30px;
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
   margin-right: -2rem;
 }

@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './Courses.scss';
 import { Helmet } from 'react-helmet-async';
+import { PagesContext } from '../../context/pagesData/PagesProvider';
+import { COURSE_ACTION } from '../../context/pagesData/Reducer';
+import ErrorMessage from '../../components/utiles/ErrorMessage';
+import Loading from '../../components/utiles/Loading';
+import MessageBox from '../../components/utiles/MessageBox';
 
 const Courses = () => {
-  // State variables
-  const [services, setServices] = useState([]);
+  // Global State variables
+  const { loading, error, courses, dispatch } = useContext(PagesContext);
 
   // using useEffect hook display service data from the backend to the frontend
   useEffect(() => {
     const fetchServiceData = async () => {
+      dispatch({ type: COURSE_ACTION.FETCH_COURSE_REQUEST });
       try {
         const { data } = await axios.get(
-          process.env.REACT_APP_SERVER_URL + `/api/pages/services`
+          process.env.REACT_APP_SERVER_URL + `/api/pages/courses`
         );
-        setServices(data);
+        dispatch({ type: COURSE_ACTION.FETCH_COURSE_SUCCESS, payload: data });
       } catch (error) {
-        console.log(error);
+        dispatch({
+          type: COURSE_ACTION.FETCH_COURSE_FAIL,
+          payload: ErrorMessage(error),
+        });
       }
     };
     fetchServiceData();
@@ -30,24 +39,30 @@ const Courses = () => {
       </Helmet>
       <h1 className="service-page-title"> Available Courses in LisaConsult </h1>
 
-      <div className="courses-container">
-        {services.map((course, index) => {
-          return (
-            <section key={index} className="course">
-              <h2 className="course-title"> {course.courseTitle} </h2>
-              <div>
-                <p> {course.firstParagraph} </p>
-                <p> {course.secondParagraph} </p>
-                <div className="join-us-link-container">
-                  <NavLink to="/course" className="join-link">
-                    {course.link}
-                  </NavLink>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <MessageBox variant="danger"> {error} </MessageBox>
+      ) : (
+        <div className="courses-container">
+          {courses.map((course, index) => {
+            return (
+              <section key={index} className="course">
+                <h2 className="course-title"> {course.courseTitle} </h2>
+                <div>
+                  <p> {course.firstParagraph} </p>
+                  <p> {course.secondParagraph} </p>
+                  <div className="join-us-link-container">
+                    <NavLink to="/course" className="join-link">
+                      {course.link}
+                    </NavLink>
+                  </div>
                 </div>
-              </div>
-            </section>
-          );
-        })}
-      </div>
+              </section>
+            );
+          })}
+        </div>
+      )}
     </main>
   );
 };

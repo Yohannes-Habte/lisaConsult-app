@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Home.scss';
 import { useContext } from 'react';
-import { ServiceContext } from '../../context/investments/ServiceProvider';
-import { INVESTMENT_ACTION } from '../../context/investments/Reducer';
+import { PagesContext } from '../../context/pagesData/PagesProvider';
+import { INVESTMENT_ACTION, TITLEDATA_ACTION } from '../../context/pagesData/Reducer';
 import Loading from '../../components/utiles/Loading';
 import Message from '../../components/utiles/MessageBox';
 import { Helmet } from 'react-helmet-async';
@@ -12,25 +12,25 @@ import ErrorMessage from '../../components/utiles/ErrorMessage';
 const Home = () => {
   // Global state variables
   const { titleData, investments, loading, error, dispatch } =
-    useContext(ServiceContext);
+    useContext(PagesContext);
 
   // useEffect to display home page data fetched from the backend
   useEffect(() => {
     // Title part
     const fetchTitleData = async () => {
-      dispatch({ type: INVESTMENT_ACTION.FETCH_REQUEST });
+      dispatch({ type: TITLEDATA_ACTION.FETCH_TITLEDATA_REQUEST});
       try {
         const { data } = await axios.get(
           process.env.REACT_APP_SERVER_URL + `/api/pages/homePageTitle`
         );
         dispatch({
-          type: INVESTMENT_ACTION.FETCH_TITLEDATA_SUCCESS,
+          type: TITLEDATA_ACTION.FETCH_TITLEDATA_SUCCESS,
           payload: data,
         }); 
       } catch (error) {
         console.log(error);
         dispatch({
-          type: INVESTMENT_ACTION.FETCH_FAIL,
+          type: TITLEDATA_ACTION.FETCH_TITLEDATA_FAIL,
           payload: ErrorMessage(error)
         });
       }
