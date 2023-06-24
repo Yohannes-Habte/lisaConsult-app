@@ -8,7 +8,6 @@ import {
 import Home from './views/homePage/Home';
 import Login from './views/loginPage/Login';
 import Single from './views/singlePage/Single';
-import { productInputs, userInputs } from './data/DataFormSource';
 import { BackgroundContext } from './context/background/BgProvider';
 import './styles/BgColor.scss';
 import { AdminContext } from './context/admin/AdminProvider';
@@ -49,7 +48,7 @@ const App = () => {
               }
             />
 
-            {/* Admin Route has further nexted route */}
+            {/* User Route has further nexted route */}
             <Route path="users">
               <Route
                 index

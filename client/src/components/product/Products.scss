@@ -42,3 +42,93 @@
     padding: 0.3rem 1rem;
   }
 }
+
+/* Tablet screen size */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .product-info {
+    @include shadow;
+    .product-image {
+      .image {
+        width: 300px;
+        height: 220px;
+        border-radius: 0.3rem;
+      }
+    }
+  
+    .product-name-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .product-title {
+        margin-left: 0;
+      }
+  
+      .price {
+        font-size: $afs;
+        font-weight: $aafw;
+        color: $title;
+      }
+    }
+  
+    .rating-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .product-btn {
+        @include btn2;
+        border: 1px solid $title;
+      }
+    }
+  
+    .product-description {
+      padding: 0.3rem 1rem;
+    }
+  }
+}
+
+/* Labtop screen size */
+@media screen and (min-width: 1024px) {
+  .product-info {
+    @include shadow;
+    .product-image {
+      .image {
+        width: 300px;
+        height: 220px;
+        border-radius: 0.3rem;
+      }
+    }
+  
+    .product-name-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .product-title {
+        margin-left: 0;
+      }
+  
+      .price {
+        font-size: $afs;
+        font-weight: $aafw;
+        color: $title;
+      }
+    }
+  
+    .rating-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .product-btn {
+        @include btn2;
+        border: 1px solid $title;
+      }
+    }
+  
+    .product-description {
+      padding: 0.3rem 1rem;
+    }
+  }
+}

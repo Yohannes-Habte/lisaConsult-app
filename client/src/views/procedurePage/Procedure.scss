@@ -2,7 +2,8 @@
 @import '../../styles/Mixins.scss';
 
 .procedure-page {
-  width: $mobile;
+  width: 100%;
+  max-width: $mobile;
   margin: 1rem auto;
   border-radius: 0.5rem;
 
@@ -22,7 +23,8 @@
 /* Tablet screen size */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .procedure-page {
-    width: $tablet;
+    width: 100%;
+    max-width: $tablet;
     margin: 1rem auto;
 
     .about-page-title {
@@ -33,11 +35,11 @@
     }
 
     .service-ordering-processes {
-      width: $tablet;
+      max-width: $tablet;
       margin: 1rem auto;
-      display: grid;
-      grid-template-rows: repeat(2, 1fr);
-      row-gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 }
@@ -45,7 +47,8 @@
 /* Labtop screen size */
 @media screen and (min-width: 1024px) {
   .procedure-page {
-    width: $laptop;
+    width: 100%;
+    max-width: $laptop;
     margin: 1rem auto;
 
     .procedure-page-title {
