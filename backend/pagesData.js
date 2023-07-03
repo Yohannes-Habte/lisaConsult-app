@@ -92,7 +92,7 @@ const data = {
       firstParagraph:
         'LisaConsult provides an outstanding services for customers who are looking to invest in Cryptocurrency, Equities, Real estate andbonds. If you are chasing your dream, come to LisaConsult to make your dream come true.',
       secondParagraph: `Click "Registration Form" below to fill out the form and enjoy the course of your dreams to unlock your untapped potential.`,
-      link: 'Registration Form',
+      link: 'Register Now',
     },
 
     {
@@ -100,21 +100,21 @@ const data = {
       firstParagraph:
         'LisaConsult provides an outstanding services for customers who are looking to be expert in Web Design and Development. If you are chasing your dream, come to LisaConsult to make your dream come true.',
       secondParagraph: `Click "Registration Form" below to fill out the form and enjoy the course of your dreams to unlock your untapped potential.`,
-      link: 'Registration Form',
+      link: 'Register Now',
     },
     {
       courseTitle: 'Online Marketing',
       firstParagraph:
         'LisaConsult provides an outstanding services for customers who are looking to be expert in Search Engine Marketing (SEM), Search Engine Optimization (SEO), Google Adwords , Web Analytics, Content Marketing, and Social Media Marketing (SMM)  . If you are chasing your dream, come to LisaConsult to make your dream come true.',
       secondParagraph: `Click "Registration Form" below to fill out the form and enjoy the course of your dreams to unlock your untapped potential.`,
-      link: 'Registration Form',
+      link: 'Register Now',
     },
     {
       courseTitle: 'Contemporary Leadership',
       firstParagraph:
         ' LisaConsult provides an outstanding services for customers who are looking to be expert in Contemporary Leadership. If you are chasing your dream, come to LisaConsult to make your dream come true.',
       secondParagraph: `Click "Registration Form" below to fill out the form and enjoy the course of your dreams to unlock your untapped potential.`,
-      link: 'Registration Form',
+      link: 'Register Now',
     },
   ],
 

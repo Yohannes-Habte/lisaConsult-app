@@ -13,8 +13,8 @@ const CoursesTable = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-   // useEffect to display products
-   useEffect(() => {
+  // useEffect to display products
+  useEffect(() => {
     const fetchingData = async () => {
       setLoading(true);
       try {
@@ -43,7 +43,6 @@ const CoursesTable = () => {
     }
   };
 
-
   return (
     <div className="users-data-table">
       <article className="add-user">
@@ -56,10 +55,10 @@ const CoursesTable = () => {
       <table className="users-table">
         <thead className="table-head">
           <tr className="table-head-row">
-            <th className="head-cell"> ID </th>
-            <th className="head-cell"> Name </th>
-            <th className="head-cell"> Category </th>
-            <th className="head-cell"> Brand </th>
+            <th className="head-cell"> Course ID </th>
+            <th className="head-cell">Course Name </th>
+            <th className="head-cell"> Course Price </th>
+            <th className="head-cell"> Language </th>
             <th className="head-cell"> Action </th>
           </tr>
         </thead>
@@ -69,11 +68,9 @@ const CoursesTable = () => {
             return (
               <tr key={course._id} className="table-body-row">
                 <td className="body-cell"> {course._id} </td>
-                <td className="body-cell-image">
-                {course.name}
-                </td>
-                <td className="body-cell-email"> ${course.price} </td>
-                <td className="body-cell-age"> {course.description} </td>
+                <td className="body-cell">{course.name}</td>
+                <td className="body-cell"> ${course.price} </td>
+                <td className="body-cell"> {course.language} </td>
                 <td className="body-cell-action">
                   <div className="action-wrapper">
                     <NavLink to={'/users/userId'} className={'link'}>

@@ -2,11 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import './CourseRegistration.scss';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import { CourseContext } from '../../context/course/CourseProvider';
 import { COURSE_ACTION } from '../../context/course/CourseReducer';
 import { UserCartContext } from '../../context/userAndCart/UserCartProvider';
 import { CourseCheckoutSteps } from '../../components/utiles/CheckoutSteps';
+import { useNavigate } from 'react-router-dom';
 
 const CourseRegistration = () => {
   const navigate = useNavigate();
@@ -39,34 +39,31 @@ const CourseRegistration = () => {
     setStart('');
   };
 
-  // If user does not logged in, navigate user to login page
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-    }
-  }, [user, navigate]);
-
   // Function to sumit user registered for a course
   const hadleSubmit = async (event) => {
     event.preventDefault();
-
-    if (!name) {
-      toast.error('Please enter course name!');
-    } else if (!start) {
-      toast.error('Please enter the starting date!');
-    } else {
-      try {
-        const newCourse = {
-          name: name,
-          start: start,
-        };
-        dispatch({ type: COURSE_ACTION.ADD_COURSE, payload: newCourse });
-        localStorage.setItem('course', JSON.stringify(newCourse));
-        navigate('/studentAddress');
-        reset();
-      } catch (error) {
-        console.log(error.message);
+    if (user) {
+      if (!name) {
+        toast.error('Please enter course name!');
+      } else if (!start) {
+        toast.error('Please enter the starting date!');
+      } else {
+        try {
+          const newCourse = {
+            name: name,
+            start: start,
+          };
+          dispatch({ type: COURSE_ACTION.ADD_COURSE, payload: newCourse });
+          localStorage.setItem('course', JSON.stringify(newCourse));
+          reset();
+          navigate('/studentAddress');
+        } catch (error) {
+          console.log(error.message);
+        }
       }
+    } else {
+      toast.error('Please login first!');
+      navigate('/login');
     }
   };
 
@@ -76,7 +73,7 @@ const CourseRegistration = () => {
         <title> Course Registration</title>
       </Helmet>
 
-      <CourseCheckoutSteps step1 step2 /> 
+      <CourseCheckoutSteps step1 step2 />
 
       <h1 className="course-registration-title">
         Welcome to Your Favorite Course

@@ -1,6 +1,6 @@
-import { ADMIN_ACTION } from './AdminProvider';
+import { ADMIN_ACTION } from './UserProvider';
 
-const AdminReducer = (state, action) => {
+const UserReducer = (state, action) => {
     switch (action.type) {
       case ADMIN_ACTION.LOGIN_START:
         return { user: null, loading: true, error: null };
@@ -19,4 +19,4 @@ const AdminReducer = (state, action) => {
     }
   };
 
-export default AdminReducer
+export default UserReducer

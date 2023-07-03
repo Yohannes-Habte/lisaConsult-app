@@ -44,11 +44,13 @@ const Cart = () => {
 
   // Function that handle checkout
   const checkoutHandler = async () => {
-    if (user) {
-      navigate('/shipping');
-    } else {
+    if (!user) {
       toast.error('Please login to proceed to next step!');
       navigate('/login');
+    } else if (user && cartItems.length < 3) {
+      toast.error('You need to order at least three meals!');
+    } else {
+      navigate('/shipping');
     }
   };
 
@@ -62,10 +64,9 @@ const Cart = () => {
 
       {cartItems.length === 0 ? (
         <Message>
-          Cart is empty.{' '}
+          Cart is empty.
           <NavLink to={'/products'} className={'go-to-shopping'}>
-            {' '}
-            Go to Products Page for shopping!{' '}
+            Go to Products Page for shopping!
           </NavLink>
         </Message>
       ) : (
@@ -137,25 +138,29 @@ const Cart = () => {
           </div>
 
           {/* Total ordered products and price as well as to proceed to checkout*/}
-          <div className="total-items-and-price">
-            <h3 className="total">
-              Subtotal (
-              {cartItems.reduce((acc, curr) => acc + curr.quantity, 0)})
-              Products: $
-              {cartItems.reduce(
-                (acc, curr) => acc + curr.price * curr.quantity,
-                0
-              )}
+          <aside className="total-items-and-price">
+            <h3 className="total-order">
+              Order: {cartItems.reduce((acc, curr) => acc + curr.quantity, 0)}{' '}
+              Meals
             </h3>
+            <p className="price">
+              <strong>
+                Price: $
+                {cartItems.reduce(
+                  (acc, curr) => acc + curr.price * curr.quantity,
+                  0
+                )}
+              </strong>
+            </p>
             <button
               onClick={checkoutHandler}
               type="button"
-              disabled={cart.cartItems.length <= 1}
+              disabled={cart.cartItems.length < 2}
               className="checkout-btn"
             >
               Proceed to Checkout
             </button>
-          </div>
+          </aside>
         </div>
       )}
     </main>

@@ -10,18 +10,18 @@ import Login from './views/loginPage/Login';
 import Single from './views/singlePage/Single';
 import { BackgroundContext } from './context/background/BgProvider';
 import './styles/BgColor.scss';
-import { AdminContext } from './context/admin/AdminProvider';
 import UserList from './views/listPage/UserList';
 import ProductList from './views/listPage/ProductList';
 import CourseList from './views/listPage/CourseList';
 import NewCourse from './views/newPage/NewCourse';
 import NewProduct from './views/newPage/NewProduct';
 import NewUser from './views/newPage/NewUser';
+import { UserContext } from './context/user/UserProvider';
 
 const App = () => {
   // Global variable
   const { darkMode } = useContext(BackgroundContext);
-  const { user } = useContext(AdminContext);
+  const { user } = useContext(UserContext);
 
   // Route Protection function from accessing non-admin users
   // How to protect route or routes

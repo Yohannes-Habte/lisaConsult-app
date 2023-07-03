@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './Courses.scss';
@@ -19,7 +19,7 @@ const Courses = () => {
       dispatch({ type: COURSE_ACTION.FETCH_COURSE_REQUEST });
       try {
         const { data } = await axios.get(
-          process.env.REACT_APP_SERVER_URL + `/api/pages/courses`
+          process.env.REACT_APP_SERVER_URL + `/api/courses`
         );
         dispatch({ type: COURSE_ACTION.FETCH_COURSE_SUCCESS, payload: data });
       } catch (error) {
@@ -48,13 +48,13 @@ const Courses = () => {
           {courses.map((course, index) => {
             return (
               <section key={index} className="course">
-                <h2 className="course-title"> {course.courseTitle} </h2>
+                <h2 className="course-title"> {course.name} </h2>
                 <div>
-                  <p> {course.firstParagraph} </p>
+                  <p> {course.description} </p>
                   <p> {course.secondParagraph} </p>
                   <div className="join-us-link-container">
                     <NavLink to="/course" className="join-link">
-                      {course.link}
+                      Register Now
                     </NavLink>
                   </div>
                 </div>

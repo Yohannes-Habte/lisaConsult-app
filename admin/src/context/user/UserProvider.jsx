@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import { useReducer } from 'react';
-import AdminReducer from './AdminReducer';
+import UserReducer from './UserReducer';
 
 export const ADMIN_ACTION = {
   LOGIN_START: 'LOGIN_START',
@@ -12,20 +12,21 @@ export const ADMIN_ACTION = {
 // Initial states
 const initialState = {
   //user: null,
-  user: localStorage.getItem("user")? JSON.parse(localStorage.getItem('user')) : null,
+  user: localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : null,
   loading: false,
   error: null,
 };
 
-
 // user context
-export const AdminContext = createContext(initialState);
+export const UserContext = createContext(initialState);
 
-const AdminProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AdminReducer, initialState);
+const UserProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(UserReducer, initialState);
 
   return (
-    <AdminContext.Provider
+    <UserContext.Provider
       value={{
         user: state.user,
         loading: state.loading,
@@ -34,8 +35,8 @@ const AdminProvider = ({ children }) => {
       }}
     >
       {children}
-    </AdminContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export default AdminProvider;
+export default UserProvider;

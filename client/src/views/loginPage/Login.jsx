@@ -113,7 +113,6 @@ const Login = () => {
       //& 1. Save user in the local storage
       localStorage.setItem('user', JSON.stringify(data));
       resetVariables();
-      //! How to do dynamic navigation will be done soon
       navigate('/');
     } catch (err) {
       //? toast-step-3: display the err using the GetError function from the component

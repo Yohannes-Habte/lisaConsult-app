@@ -13,10 +13,18 @@ import { MdSchool } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { BackgroundContext } from '../../context/background/BgProvider';
 import { BACKGROUND_ACTION } from '../../context/background/BgReducer';
+import { ADMIN_ACTION, UserContext } from '../../context/user/UserProvider';
 
 const Sidebar = () => {
   // Global variables
   const { dispatch } = useContext(BackgroundContext);
+  const { user, dispatch: userDispatch } = useContext(UserContext);
+
+    // User logout
+    const logout = () => {
+      userDispatch({ type: ADMIN_ACTION.ADMIN_LOG_OUT });
+      localStorage.removeItem('user');
+    };
 
   return (
     <nav className="sidebar">
@@ -95,17 +103,21 @@ const Sidebar = () => {
           <p className="sub-title"> User </p>
           <li className="item">
             <CgProfile className="sidebar-icon" />
-            <span className="span-text"> Profile </span>
+            {user ? (
+              <span className="span-text"> {user.firstName} </span>
+            ) : (
+              <span>Profile</span>
+            )}
           </li>
 
           <li className="item">
-            <AiOutlineLogout className="sidebar-icon" />
-            <span className="span-text"> Logout </span>
+            <AiOutlineLogout onClick={logout} className="sidebar-icon" />
+            <span className="span-text" onClick={logout}> Logout </span>
           </li>
         </ul>
       </div>
-      <article className='backgroung-color'>
-        <h4 className='bg-title'> Background Color</h4>
+      <article className="backgroung-color">
+        <h4 className="bg-title"> Background Color</h4>
         <div className="color-options">
           <div
             className="color-option"

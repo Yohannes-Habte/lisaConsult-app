@@ -5,17 +5,17 @@ import App from './App';
 import { HelmetProvider } from 'react-helmet-async';
 
 import BgProvider from './context/background/BgProvider';
-import AdminProvider from './context/admin/AdminProvider';
+import UserProvider from './context/user/UserProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AdminProvider>
+    <UserProvider>
       <BgProvider>
         <HelmetProvider>
           <App />
         </HelmetProvider>
       </BgProvider>
-    </AdminProvider>
+    </UserProvider>
   </React.StrictMode>
 );

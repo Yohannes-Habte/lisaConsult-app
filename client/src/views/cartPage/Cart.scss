@@ -98,7 +98,12 @@
       border-radius: 0.2rem;
       box-shadow: 0 0 1px;
       padding: 0.5rem 1rem;
-      .total {
+      .total-order {
+        line-height: 2rem;
+      }
+
+      .price {
+        font-size: $afs
       }
 
       .checkout-btn {

@@ -5,16 +5,16 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { Helmet } from 'react-helmet-async';
-import { ADMIN_ACTION, AdminContext } from '../../context/admin/AdminProvider';
 import ErrorMessage from '../../utiles/ErrorMessage';
 import Loading from '../../utiles/Loading';
 import AlertMessageBox from '../../utiles/AlertMessageBox';
+import { ADMIN_ACTION, UserContext } from '../../context/user/UserProvider';
 
 const Login = () => {
   const navigate = useNavigate();
 
   // Global state variables
-  const { loading, error, user, dispatch } = useContext(AdminContext);
+  const { loading, error, user, dispatch } = useContext(UserContext);
 
   // State variables
   const [email, setEmail] = useState('');
