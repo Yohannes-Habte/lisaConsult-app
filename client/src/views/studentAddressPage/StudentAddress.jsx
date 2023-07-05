@@ -96,13 +96,6 @@ const StudentAddress = () => {
     setCountry('');
   };
 
-   // useEffect
-   useEffect(() => {
-    if (!studentAddress.address) {
-      navigate('/course');
-    }
-  }, [studentAddress, navigate]);
-
   // Submit student address
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -61,7 +61,7 @@ const CoursePayment = () => {
             <input
               type="radio"
               name="paymentMethodName"
-              is="payPal"
+              id="payPal"
               value={paymentMethodName}
               checked={paymentMethodName === 'payPal'}
               onChange={(e) => setPaymentMethod(e.target.value)}
@@ -73,7 +73,7 @@ const CoursePayment = () => {
             <input
               type="radio"
               name="paymentMethodName"
-              is="stripe"
+              id="stripe"
               value={paymentMethodName}
               checked={paymentMethodName === 'stripe'}
               onChange={(e) => setPaymentMethod(e.target.value)}
