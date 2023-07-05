@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './CervicesProcedures.scss';
 import axios from 'axios';
-import {
-  BsFillArrowDownCircleFill,
-  BsFillArrowUpCircleFill,
-} from 'react-icons/bs';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Loading from '../utiles/Loading';
 import MessageBox from '../utiles/MessageBox';
 import { PagesContext } from '../../context/pagesData/PagesProvider';
@@ -21,31 +18,6 @@ const MealsOrderSteps = () => {
   const [stepFour, setStepFour] = useState(false);
   const [stepFive, setStepFive] = useState(false);
   const [stepSix, setStepSix] = useState(false);
-
-  // Handle click to display and hide each step
-  const handleStepOne = () => {
-    setStepOne(!stepOne);
-  };
-
-  const handleStepTwo = () => {
-    setStepTwo(!stepTwo);
-  };
-
-  const handleStepThree = () => {
-    setStepThree(!stepThree);
-  };
-
-  const handleStepFour = () => {
-    setStepFour(!stepFour);
-  };
-
-  const handleStepFive = () => {
-    setStepFive(!stepFive);
-  };
-
-  const handleStepSix = () => {
-    setStepSix(!stepSix);
-  };
 
   // Display service procedures in the frontend fetched from backend
   useEffect(() => {
@@ -70,132 +42,157 @@ const MealsOrderSteps = () => {
   }, []);
 
   return (
-    <section className="procedures-of-getting-services">
+    <article className="procedures-of-getting-services">
       {loading ? (
         <Loading />
       ) : error ? (
         <MessageBox variant="danger"> {error} </MessageBox>
       ) : (
-        <article className="specific-service-procedure">
+        <section className="specific-service-procedure">
           <h3 className="sub-title">{procedures.mealsStepsTitle}</h3>
 
-          {/* Step One */}
-          <article className="step">
-            <h4 className="procedure-title"> Step One</h4>
-
+          {/* Step 1 */}
+          <section className="step">
+            <h3
+              onClick={() => setStepOne(!stepOne)}
+              className={stepOne ? 'step-title' : 'default'}
+            >
+              Step One
+            </h3>
             {stepOne ? (
-              <BsFillArrowUpCircleFill
-                onClick={handleStepOne}
-                className="icon-up"
+              <IoIosArrowUp
+                onClick={() => setStepOne(!stepOne)}
+                className="up-arrow"
               />
             ) : (
-              <BsFillArrowDownCircleFill
-                onClick={handleStepOne}
-                className="icon-down"
+              <IoIosArrowDown
+                onClick={() => setStepOne(!stepOne)}
+                className="down-arrow"
               />
             )}
-          </article>
-          <p className={stepOne ? 'display-step-one' : 'hide'}>
-            {procedures.mealsStep1}
-          </p>
+
+            {stepOne && <p className="paragraph"> {procedures.mealsStep1} </p>}
+          </section>
 
           {/* Step Two */}
-          <article className="step">
-            <h4 className="procedure-title"> Step Two</h4>
+          <section className="step">
+            <h3
+              onClick={() => setStepTwo(!stepTwo)}
+              className={stepTwo ? 'step-title' : 'default'}
+            >
+              Step Two
+            </h3>
             {stepTwo ? (
-              <BsFillArrowUpCircleFill
-                onClick={handleStepTwo}
-                className="icon-up"
+              <IoIosArrowUp
+                onClick={() => setStepTwo(!stepTwo)}
+                className="up-arrow"
               />
             ) : (
-              <BsFillArrowDownCircleFill
-                onClick={handleStepTwo}
-                className="icon-down"
+              <IoIosArrowDown
+                onClick={() => setStepTwo(!stepTwo)}
+                className="down-arrow"
               />
             )}
-          </article>
-          <p className={stepTwo ? 'display-step-two' : 'hide'}>
-            {procedures.mealsStep2}
-          </p>
+
+            {stepTwo && <p className="paragraph"> {procedures.mealsStep2} </p>}
+          </section>
 
           {/* Step Three */}
-          <article className="step">
-            <h4 className="procedure-title"> Step Three</h4>
+          <section className="step">
+            <h3
+              onClick={() => setStepThree(!stepThree)}
+              className={stepThree ? 'step-title' : 'default'}
+            >
+              Step Three
+            </h3>
             {stepThree ? (
-              <BsFillArrowUpCircleFill
-                onClick={handleStepThree}
-                className="icon-up"
+              <IoIosArrowUp
+                onClick={() => setStepThree(!stepThree)}
+                className="up-arrow"
               />
             ) : (
-              <BsFillArrowDownCircleFill
-                onClick={handleStepThree}
-                className="icon-down"
+              <IoIosArrowDown
+                onClick={() => setStepThree(!stepThree)}
+                className="down-arrow"
               />
             )}
-          </article>
-          <p className={stepThree ? 'display-step-three' : 'hide'}>
-            {procedures.mealsStep3}
-          </p>
+
+            {stepThree && (
+              <p className="paragraph"> {procedures.mealsStep3} </p>
+            )}
+          </section>
 
           {/* Step Four */}
-          <article className="step">
-            <h4 className="procedure-title"> Step Four</h4>
+          <section className="step">
+            <h3
+              onClick={() => setStepFour(!stepFour)}
+              className={stepFour ? 'step-title' : 'default'}
+            >
+              Step Four
+            </h3>
             {stepFour ? (
-              <BsFillArrowUpCircleFill
-                onClick={handleStepFour}
-                className="icon-up"
+              <IoIosArrowUp
+                onClick={() => setStepFour(!stepFour)}
+                className="up-arrow"
               />
             ) : (
-              <BsFillArrowDownCircleFill
-                onClick={handleStepFour}
-                className="icon-down"
+              <IoIosArrowDown
+                onClick={() => setStepFour(!stepFour)}
+                className="down-arrow"
               />
             )}
-          </article>
-          <p className={stepFour ? 'display-step-four' : 'hide'}>
-            {procedures.mealsStep4}
-          </p>
+
+            {stepFour && <p className="paragraph"> {procedures.mealsStep4} </p>}
+          </section>
 
           {/* Step Five */}
-          <article className="step">
-            <h4 className="procedure-title"> Step Five</h4>
+          <section className="step">
+            <h3
+              onClick={() => setStepFive(!stepFive)}
+              className={stepFive ? 'step-title' : 'default'}
+            >
+              Step Five
+            </h3>
             {stepFive ? (
-              <BsFillArrowUpCircleFill
-                onClick={handleStepFive}
-                className="icon-up"
+              <IoIosArrowUp
+                onClick={() => setStepFive(!stepFive)}
+                className="up-arrow"
               />
             ) : (
-              <BsFillArrowDownCircleFill
-                onClick={handleStepFive}
-                className="icon-down"
+              <IoIosArrowDown
+                onClick={() => setStepFive(!stepFive)}
+                className="down-arrow"
               />
             )}
-          </article>
-          <p className={stepFive ? 'display-step-five' : 'hide'}>
-            {procedures.mealsStep5}
-          </p>
+
+            {stepFive && <p className="paragraph"> {procedures.mealsStep5} </p>}
+          </section>
 
           {/* Step Six */}
-          <article className="step">
-            <h4 className="procedure-title"> Step Six</h4>
+          <section className="step">
+            <h3
+              onClick={() => setStepSix(!stepSix)}
+              className={stepSix ? 'step-title' : 'default'}
+            >
+              Step Six
+            </h3>
             {stepSix ? (
-              <BsFillArrowUpCircleFill
-                onClick={handleStepSix}
-                className="icon-up"
+              <IoIosArrowUp
+                onClick={() => setStepSix(!stepSix)}
+                className="up-arrow"
               />
             ) : (
-              <BsFillArrowDownCircleFill
-                onClick={handleStepSix}
-                className="icon-down"
+              <IoIosArrowDown
+                onClick={() => setStepTwo(!stepSix)}
+                className="down-arrow"
               />
             )}
-          </article>
-          <p className={stepSix ? 'display-step-six' : 'hide'}>
-            {procedures.mealsStep6}
-          </p>
-        </article>
+
+            {stepSix && <p className="paragraph"> {procedures.mealsStep6} </p>}
+          </section>
+        </section>
       )}
-    </section>
+    </article>
   );
 };
 

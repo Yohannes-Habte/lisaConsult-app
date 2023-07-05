@@ -17,11 +17,36 @@
     }
 
     .step {
-      padding: 0.5rem 1rem;
+      position: relative;
+      @include shadow2;
+      margin-top: 1rem;
+      cursor: pointer;
 
-      & span {
-        color: rgb(55, 7, 200);
-        font-weight: bold;
+      .down-arrow {
+        position: absolute;
+        right: 1.5rem;
+        top: 1.3rem;
+        color: $title;
+        font-size: $afs;
+      }
+
+      .up-arrow {
+        position: absolute;
+        right: 1.5rem;
+        top: 2rem;
+        color: $color;
+        font-size: $afs;
+      }
+
+      .step-title {
+        @include shadow2;
+        background-color: $sideNavbar-bg;
+        color: #000000;
+      }
+
+      .paragraph {
+        background-color: none;
+        margin-top: 0.3rem;
       }
     }
   }
@@ -45,11 +70,37 @@
       }
 
       .step {
-        padding: 0.5rem 1rem;
+        position: relative;
+        @include shadow2;
+        margin-top: 1rem;
+        cursor: pointer;
 
-        & span {
-          color: rgb(55, 7, 200);
-          font-weight: bold;
+        .down-arrow {
+          position: absolute;
+          right: 1.5rem;
+          top: 1.3rem;
+          color: $title;
+          font-size: $afs;
+        }
+
+        .up-arrow {
+          position: absolute;
+          right: 1.5rem;
+          top: 2rem;
+          color: $color;
+          font-size: $afs;
+        }
+
+        .step-title {
+          @include shadow2;
+          background-color: $sideNavbar-bg;
+          color: #000000;
+        }
+
+        .paragraph {
+          background-color: none;
+          @include shadow2;
+          margin-top: 0.3rem;
         }
       }
     }
@@ -63,92 +114,51 @@
     margin: 1rem auto;
 
     .specific-service-procedure {
-      position: relative;
       @include shadow;
 
-      .sub-title {
-        @include shadow;
-        font-size: 1.3rem;
-      }
-
-      .step {
-        @include step;
-
-        .procedure-title {
-          font-size: $afs;
-          color: #4a4aed;
+  .steps-title {
+          @include shadow2;
+          background-color: $sideNavbar-bg;
+          color: #000000;
         }
 
-        .icon-up {
-          color: $color;
+        .step {
+          position: relative;
+          @include shadow2;
+          margin-top: 1rem;
           cursor: pointer;
-          font-size: 1.4rem;
+
+          .down-arrow {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            color: $title;
+            font-size: $afs;
+          }
+
+          .up-arrow {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            color: $color;
+            font-size: $afs;
+          }
+
+          .step-title {
+            background-color: $element;
+            padding: 0.5rem;
+          }
+
+          .default {
+            background-color: $main;
+          }
+
+          .paragraph {
+            background-color: none;
+            @include shadow2;
+            margin-top: 0.5rem;
+          }
         }
-        .icon-down {
-          color: $title;
-          cursor: pointer;
-          font-size: 1.4rem;
-        }
-      }
-
-      .display-step-one {
-        position: absolute;
-        bottom: 52%;
-        right: 1.5rem;
-        left: 1rem;
-        @include step;
-        width: 94%;
-        
-      }
-
-      .display-step-two {
-        position: absolute;
-        bottom: 34%;
-        right: 1.5rem;
-        left: 1rem;
-        @include step;
-        width: 94%;
-      }
-
-      .display-step-three {
-        position: absolute;
-        bottom: 25%;
-        right: 1.5rem;
-        left: 1rem;
-        @include step;
-        width: 94%;
-      }
-
-      .display-step-four {
-        position: absolute;
-        bottom: 12%;
-        right: 1.5rem;
-        left: 1rem;
-        @include step;
-        width: 94%;
-      }
-
-      .display-step-five {
-        position: absolute;
-        bottom: -1%;
-        right: 1.5rem;
-        left: 1rem;
-        @include step;
-        width: 94%;
-      }
-
-      .display-step-six {
-        position: absolute;
-        bottom: -14%;
-        right: 1.5rem;
-        left: 1rem;
-        @include step;
-        width: 94%;
-      }
-
-      .hide {
-        display: none;
-      }
     }
   }
 }

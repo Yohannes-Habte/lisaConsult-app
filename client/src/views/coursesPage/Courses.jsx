@@ -33,36 +33,38 @@ const Courses = () => {
   }, []);
 
   return (
-    <main className="servicePage-container">
+    <main className="course-page">
       <Helmet>
         <title> Courses </title>
       </Helmet>
-      <h1 className="service-page-title"> Available Courses in LisaConsult </h1>
 
-      {loading ? (
-        <Loading />
-      ) : error ? (
-        <MessageBox variant="danger"> {error} </MessageBox>
-      ) : (
-        <div className="courses-container">
-          {courses.map((course, index) => {
-            return (
-              <section key={index} className="course">
-                <h2 className="course-title"> {course.name} </h2>
-                <div>
-                  <p> {course.description} </p>
-                  <p> {course.secondParagraph} </p>
-                  <div className="join-us-link-container">
-                    <NavLink to="/course" className="join-link">
-                      Register Now
-                    </NavLink>
+      <section className="course-page-container">
+        <h1 className="course-page-title"> Courses in LisaConsult </h1>
+
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          <MessageBox variant="danger"> {error} </MessageBox>
+        ) : (
+          <div className="courses-container">
+            {courses.map((course, index) => {
+              return (
+                <section key={index} className="course">
+                  <h2 className="course-title"> {course.name} </h2>
+                  <div>
+                    <p className="description"> {course.description} </p>
+                    <div className="join-us-link-container">
+                      <NavLink to="/course" className="join-link">
+                        Register Now
+                      </NavLink>
+                    </div>
                   </div>
-                </div>
-              </section>
-            );
-          })}
-        </div>
-      )}
+                </section>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </main>
   );
 };
