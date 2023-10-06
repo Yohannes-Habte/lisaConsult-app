@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import './Home.scss';
 import { useContext } from 'react';
 import { PagesContext } from '../../context/pagesData/PagesProvider';
-import { INVESTMENT_ACTION, TITLEDATA_ACTION } from '../../context/pagesData/Reducer';
+import {
+  INVESTMENT_ACTION,
+  TITLEDATA_ACTION,
+} from '../../context/pagesData/Reducer';
 import Loading from '../../components/utiles/Loading';
-import Message from '../../components/utiles/MessageBox';
 import { Helmet } from 'react-helmet-async';
 import ErrorMessage from '../../components/utiles/ErrorMessage';
+import MessageBox from '../../components/utiles/MessageBox';
 
 const Home = () => {
   // Global state variables
@@ -18,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     // Title part
     const fetchTitleData = async () => {
-      dispatch({ type: TITLEDATA_ACTION.FETCH_TITLEDATA_REQUEST});
+      dispatch({ type: TITLEDATA_ACTION.FETCH_TITLEDATA_REQUEST });
       try {
         const { data } = await axios.get(
           process.env.REACT_APP_SERVER_URL + `/api/pages/homePageTitle`
@@ -26,12 +29,12 @@ const Home = () => {
         dispatch({
           type: TITLEDATA_ACTION.FETCH_TITLEDATA_SUCCESS,
           payload: data,
-        }); 
+        });
       } catch (error) {
         console.log(error);
         dispatch({
           type: TITLEDATA_ACTION.FETCH_TITLEDATA_FAIL,
-          payload: ErrorMessage(error)
+          payload: ErrorMessage(error),
         });
       }
     };
@@ -67,7 +70,7 @@ const Home = () => {
       {loading ? (
         <Loading />
       ) : error ? (
-        <Message variant="danger"> {error} </Message>
+        <MessageBox variant="danger"> {error} </MessageBox>
       ) : (
         <section className="investment-options">
           <h1 className="title-of-home-page"> {titleData.title} </h1>
@@ -89,7 +92,7 @@ const Home = () => {
         {loading ? (
           <Loading />
         ) : error ? (
-          <Message variant="danger"> {error} </Message>
+          <MessageBox variant="danger"> {error} </MessageBox>
         ) : (
           investments.map((item, index) => {
             return (

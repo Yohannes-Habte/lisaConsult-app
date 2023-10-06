@@ -20,7 +20,7 @@ const userSchema = new Schema(
   }
 );
 
-// Before saving password, incript it.
+// Before saving the user password, encrypt it.
 userSchema.pre('save', async function (next) {
   try {
     if (!this.isModified('password')) return next();

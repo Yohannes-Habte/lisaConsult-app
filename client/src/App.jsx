@@ -1,5 +1,10 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import About from './views/procedurePage/Procedure';
 import Contact from './views/contactPage/Contact';
@@ -62,6 +67,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/stripe-success" element={<StripeSuccess />} />
           <Route path="/stripe-cancel" element={<StripeCancel />} />
+          <Route path="*" element={<Navigate to={'/'} />} />
         </Routes>
         <Footer />
       </Router>
