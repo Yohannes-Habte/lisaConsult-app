@@ -1,0 +1,42 @@
+@import '../../../../styles/Variables.scss';
+@import '../../../../styles/Mixins.scss';
+
+.header {
+  .logo-register-login-wrapper {
+    @include flexSpaceBetween;
+    .text-logo {
+    }
+
+    .register-login-container {
+      @include flexRow;
+      gap: 1rem;
+
+      .item {
+        .link {
+        }
+      }
+    }
+  }
+
+  .images-search-wrapper {
+    @include flexSpaceBetween;
+    padding: 0 2rem;
+    background-color: $header-bg;
+
+    .image-container {
+      .logo-image {
+        width: 15rem;
+        height: 15rem;
+        object-fit: contain;
+        border-radius: $radius;
+      }
+
+      .image {
+        width: 15rem;
+        height: 15rem;
+        object-fit: contain;
+      }
+
+    }
+  }
+}

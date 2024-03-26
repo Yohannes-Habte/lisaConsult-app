@@ -21,9 +21,13 @@ import paymentRouter from './routes/paymentRoutes.js';
 // Express app
 const app = express();
 app.use(cookieParser());
-app.use(cors({origin: ["http://localhost:3000", "http://lisa-consult-app.onrender.com"]}));
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'http://lisaConsult-app'],
+    credentials: true,
+  })
+);
 app.use(express.json());
-const port = process.env.PORT || 8888;
 
 //! Step 2: create API for the paypal
 app.get('/api/keys/paypal', (req, res) => {
@@ -45,6 +49,7 @@ const connectToMongoDB = async () => {
 // End points
 app.use('/api/pages', pagesDataRouter);
 app.use('/api/seeds', seedRouter);
+app.use('/api/auth', userRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/productOrders', productOrderRouter);
@@ -57,6 +62,9 @@ app.use(express.static('assets'));
 
 // Global error handler
 app.use(globalErrorHandler);
+
+// Port
+const port = process.env.PORT || 8000;
 
 // Server Listner
 app.listen(port, () => {

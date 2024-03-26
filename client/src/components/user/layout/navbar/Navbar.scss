@@ -1,0 +1,44 @@
+@import '../../../../styles/Variables.scss';
+@import '../../../../styles/Mixins.scss';
+
+.navbar-wrapper {
+  @include flexSpaceBetween;
+  background-color: $navbar-bg;
+  padding: 1rem 2rem;
+  font-size: $nfs;
+
+  .logo {
+    .logo-link {
+      @include subTitle;
+      font-size: $aafs;
+    }
+  }
+
+  .navbar-items {
+    @include flexRow;
+
+    .navbar-item {
+      .active-navbar-item {
+        @include activeNavbar;
+      }
+
+      .passive-navbar-item {
+        @include passiveNavbar;
+      }
+    }
+  }
+
+  .register-login-wrapper {
+    @include flexRow;
+
+    .navbar-item {
+      .active-navbar-item {
+        @include activeNavbar;
+      }
+
+      .passive-navbar-item {
+        @include passiveNavbar;
+      }
+    }
+  }
+}

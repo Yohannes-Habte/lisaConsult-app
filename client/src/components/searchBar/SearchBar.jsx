@@ -37,15 +37,10 @@ const SearchBar = () => {
     <div className="searchbar">
       <div className="searchbar-wrapper">
         <div className="searchbar-left">
-          <div className="search-icon-wrapper">
-            <span className="search-icon searchbar-icon">
-              <AiOutlineSearch className="icon" />
-            </span>
-          </div>
+          <AiOutlineSearch className="icon" />
         </div>
 
         <div className="searchbar-center">
-
           <input
             type="text"
             autoCapitalize="off"
@@ -57,7 +52,7 @@ const SearchBar = () => {
         </div>
 
         <div className="searchbar-right">
-          { inputText === '' ? (
+          {inputText === '' ? (
             <svg
               className="voice-search"
               role="button"
